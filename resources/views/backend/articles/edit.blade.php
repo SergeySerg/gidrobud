@@ -3,7 +3,7 @@
 @section('breadcrumbs')
     <li>
         <i class="icon-home home-icon"></i>
-        <a href="{{ $url }}/">Головна</a>
+        <a href="{{ $url }}/">{{ trans('backend.main') }}</a>
         <span class="divider">
             <i class="icon-angle-right arrow-icon"></i>
         </span>
@@ -27,7 +27,7 @@
     @if(isset($admin_article))
         <li class="active">{{$admin_article->id}}</li>
     @else
-        <li class="active">Додати новий запис</li>
+        <li class="active">{{ trans('backend.add_new_item') }}</li>
     @endif
 @stop
 
@@ -35,7 +35,7 @@
 
     <div class="page-content">
         <div class="page-header position-relative">
-            <h1>{{ isset($admin_article) ? "Редагувати" : 'Додати' }}</h1>
+            <h1>{{ isset($admin_article) ? trans('backend.edit') : trans('backend.ad') }}</h1>
         </div><!--/.page-header-->
 
         <div class="row-fluid">
@@ -50,26 +50,141 @@
                                     <div class="control-group">
                                         <label class="control-label" for="form-field-2">{{ $key }}</label>
                                         <div class="controls">
-                                            <input type="text" id="form-field-2" name='attributes[{{ $key }}]'  value='{{ $attributes -> $key or ''}}'/>
+                                            <input type="text" id="form-field-2" name='attributes[{{ $key }}]'  value='{{ $attributes[$key]  or ''}}'/>
+                                        </div>
+                                    </div>
+                                @elseif ($attribute->type == 'checkbox')
+                                    <div class="control-group">
+                                        <label class="control-label">{{ $key }}</label>
+                                        <div class="controls">
+                                            <div class="row-fluid">
+                                                <div class="span3">
+                                                    <label>
+                                                        <input name='attributes[{{ $key }}]' type='hidden' value='0'>
+                                                        <input name='attributes[{{ $key }}]' class="ace-switch ace-switch-6" type="checkbox" value=1 @if(isset($attributes[$key]) AND $attributes[$key] == '1') checked="checked" @endif />
+                                                        <span class="lbl"></span>
+                                                    </label>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 @elseif ($attribute->type == 'textarea' )
                                     <h4 class="header blue clearfix">{{ $key }}</h4>
                                     <div class="control-group">
-                                        <textarea name='attributes["{{ $key }}"]' class="span12" data-id="{{ $key }}" placeholder="Опис">{{ $attributes -> $key or ''}}</textarea>
+                                        <textarea name='attributes[{{ $key }}]' class="span12" data-id="{{ $key }}" placeholder="{{ trans('backend.description_category') }}">{{ $attributes[$key] or ''}}</textarea>
                                     </div>
-                                @elseif ($attribute->type == 'textarea-no-wysiwyg' )
+                                @elseif ($attribute->type == 'textarea-no-wysiwyg')
                                     <h4 class="header blue clearfix">{{ $key }}</h4>
                                     <div class="control-group">
-                                        <textarea name='attributes["{{ $key }}"]' class="span12 no-wysiwyg" data-id="{{ $key }}" placeholder="Опис">{{ $attributes -> $key or ''}}</textarea>
+                                        <textarea name='attributes[{{ $key }}]' class="span12 no-wysiwyg" data-id="{{ $key }}" placeholder="{{ trans('backend.description_category') }}">{{ $attributes[$key] or ''}}</textarea>
                                     </div>
+                                @elseif ($attribute->type == 'files' )
+                                    <div class="control-group">
+                                    <label class="control-label" for="id-date-picker-1">{{ $key }}</label>
+                                    @if(isset($admin_article) && $admin_article->getAttributeTranslate($key))
+                                        <div class="controls show-image">
+                                            <div class="row-fluid">
+                                                <div class="span3">
+                                                    <div class="profile-activity clearfix" style="border-bottom: none">
+                                                        <div>
+                                                            <img class="pull-left" alt="#" style="max-width:200px;border-radius:0%" src="{{ asset( $admin_article->getAttributeTranslate($key)) }}">
+                                                            <input type="hidden" name="saved-files-path[{{ $key }}]" value="{{ $admin_article->getAttributeTranslate($key) }}">
+                                                        </div>
+
+                                                        <div class="tools action-buttons">
+                                                            <a href="#" class="blue">
+                                                                <i class="icon-pencil bigger-125 image-edit" ></i>
+                                                            </a>
+
+                                                            <a href="#" class="red">
+                                                                <i class="icon-remove bigger-125 image-close"></i>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="controls image-upload" style="display:none">
+                                            <div class="row-fluid">
+                                                <div class="span6">
+                                                    <div class="widget-box">
+                                                        <div class="widget-header">
+                                                            <h4>{{ $key }}</h4>
+                                                                <span class="widget-toolbar">
+                                                                    <a href="#" data-action="collapse">
+                                                                        <i class="icon-chevron-up"></i>
+                                                                    </a>
+                                                                    {{-- <a href="#" data-action="close">
+                                                                         <i class="icon-remove"></i>
+                                                                     </a>--}}
+                                                                </span>
+                                                        </div>
+                                                        <div class="widget-body">
+                                                            <div class="widget-main">
+                                                                {{--
+                                                                 <div class="ace-file-input"><input type="file" name="img" id="id-input-file-2"><label data-title="Choose"><span data-title="No File ..."><i class="icon-upload-alt"></i></span></label><a class="remove" href="#"><i class="icon-remove"></i></a></div>
+                                                                --}}
+                                                                <div class="ace-file-input ace-file-multiple">
+                                                                    <input name='attributes[{{ $key }}]' type="file" id="id-input-file-3">
+                                                                    <a class="remove" href="#"><i class="icon-remove"></i></a>
+                                                                </div>
+                                                                {{--<label>
+                                                                    <input type="checkbox" name="file-format" id="id-file-format">
+                                                                    <span class="lbl"> Allow only images</span>
+                                                                </label>--}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @else
+                                        <div class="controls">
+                                            <div class="row-fluid">
+                                                <div class="span4">
+                                                    <div class="widget-box collapsed">
+                                                        <div class="widget-header">
+                                                            <h4>{{ trans('backend.img') }}</h4>
+                                                                <span class="widget-toolbar">
+                                                                    <a href="#" data-action="collapse">
+                                                                        <i class="icon-chevron-up"></i>
+                                                                    </a>
+                                                                    {{-- <a href="#" data-action="close">
+                                                                         <i class="icon-remove"></i>
+                                                                     </a>--}}
+                                                                </span>
+                                                        </div>
+                                                        <div class="widget-body">
+                                                            <div class="widget-main">
+                                                                {{--
+                                                                 <div class="ace-file-input"><input type="file" name="img" id="id-input-file-2"><label data-title="Choose"><span data-title="No File ..."><i class="icon-upload-alt"></i></span></label><a class="remove" href="#"><i class="icon-remove"></i></a></div>
+                                                                --}}
+                                                                <div class="ace-file-input ace-file-multiple">
+                                                                    <input name='attributes[{{ $key }}]' type="file" id="id-input-file-3">
+                                                                    <input type="hidden" name="saved-files-path[]" value="">
+
+
+                                                                    <a class="remove" href="#"><i class="icon-remove"></i></a>
+                                                                </div>
+                                                                {{--<label>
+                                                                    <input type="checkbox" name="file-format" id="id-file-format">
+                                                                    <span class="lbl"> Allow only images</span>
+                                                                </label>--}}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    @endif
+                                </div>
                                 @endif
                             @endif
                         @endforeach
                     @endif
                     @if($admin_category->hasField('priority'))
                         <div class="control-group">
-                            <label class="control-label" for="form-field-2">Пріоритет</label>
+                            <label class="control-label" for="form-field-2">{{ trans('backend.priority') }}</label>
 
                             <div class="controls">
                                 <input type="number" id="form-field-2" name="priority" @if(isset($admin_article)) value='{{$admin_article->priority}}' @endif  />
@@ -78,7 +193,7 @@
                     @endif
                     @if($admin_category->hasField('active'))
                         <div class="control-group">
-                            <label class="control-label">Статус</label>
+                            <label class="control-label">{{ trans('backend.status') }}</label>
                             <div class="controls">
                                 <div class="row-fluid">
                                     <div class="span3">
@@ -94,7 +209,7 @@
                     @endif
                     @if($admin_category->hasField('article_parent'))
                         <div class="control-group">
-                            <label class="control-label" for="form-field-select-1">Відношення до записів</label>
+                            <label class="control-label" for="form-field-select-1">{{ trans('backend.relation') }}</label>
                             <div class="controls">
                                 <select name="article_id" id="form-field-select-1">
                                     <option value="">
@@ -108,7 +223,7 @@
                     @endif
                     @if($admin_category->hasField('date'))
                         <div class="control-group">
-                            <label class="control-label" for="id-date-picker-1">Дата</label>
+                            <label class="control-label" for="id-date-picker-1">{{ trans('backend.date') }}</label>
                         <div class="controls">
                                 <div class="row-fluid input-append">
                                     <input class="span2 date-picker" name="date" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" @if(isset($admin_article)) value='{{date('d-m-Y',strtotime($admin_article->date)) }}' @endif/>
@@ -120,7 +235,7 @@
                     @endif
                     @if($admin_category->hasField('img'))
                         <div class="control-group">
-                           <label class="control-label" for="id-date-picker-1">Картинка</label>
+                           <label class="control-label" for="id-date-picker-1">{{ trans('backend.img') }}</label>
                             {{--<div class="controls">
                                 <div class="row-fluid input-append">
                                     <input class="span2 date-picker" name="date" id="id-date-picker-1" type="text" data-date-format="dd-mm-yyyy" @if(isset($admin_article)) value='{{date('d-m-Y',strtotime($admin_article->date)) }}' @endif/>
@@ -138,7 +253,7 @@
                                     <div class="span3">
                                         <div class="profile-activity clearfix" style="border-bottom: none">
                                             <div>
-                                                <img class="pull-left" alt="{{ $admin_article->title }}" style="max-width:200px;border-radius:0%" src="{{ asset($admin_article->img) }}">
+                                                <img class="pull-left" alt="{{ $admin_article->getTranslate('title') }}" style="max-width:200px;border-radius:0%" src="{{ asset($admin_article->img) }}">
                                             </div>
 
                                             <div class="tools action-buttons">
@@ -159,7 +274,7 @@
                                     <div class="span6">
                                         <div class="widget-box">
                                             <div class="widget-header">
-                                                <h4>Картинка</h4>
+                                                <h4>{{ trans('backend.img') }}</h4>
                                         <span class="widget-toolbar">
                                             <a href="#" data-action="collapse">
                                                 <i class="icon-chevron-up"></i>
@@ -194,7 +309,7 @@
                                     <div class="span6">
                                         <div class="widget-box collapsed">
                                             <div class="widget-header">
-                                                <h4>Картинка</h4>
+                                                <h4>{{ trans('backend.img') }}</h4>
                                         <span class="widget-toolbar">
                                             <a href="#" data-action="collapse">
                                                 <i class="icon-chevron-up"></i>
@@ -231,7 +346,7 @@
                             <div class="tabbable">
                                 <ul class="nav nav-tabs" id="myTab2">
                                     @foreach($langs as $lang)
-                                        <li @if(($lang->lang) == 'ua') class="active" @endif >
+                                        <li @if(($lang->lang) == 'ru') class="active" @endif >
                                             <a data-toggle="tab" href="#{{$lang->lang}}">{{$lang->lang}}</a>
                                         </li>
                                     @endforeach
@@ -241,13 +356,13 @@
 
                             <div class="tab-content">
                                 @foreach($langs as $lang)
-                                    <div id="{{$lang->lang}}" @if(($lang->lang) == 'ua') class="tab-pane in active" @else class="tab-pane" @endif>
+                                    <div id="{{$lang->lang}}" @if(($lang->lang) == 'ru') class="tab-pane in active" @else class="tab-pane" @endif>
                                         @if($admin_category->hasField('title'))
                                             <div class="control-group">
-                                                <label class="control-label" for="form-field-3">Назва</label>
+                                                <label class="control-label" for="form-field-3">{{ trans('backend.title') }}</label>
 
                                                 <div class="controls">
-                                                    <input type="text" name="title_{{$lang->lang}}" value='@if(isset($admin_article)){{ $admin_article->getTranslate('title', $lang->lang) }}@endif' id="form-field-3" placeholder="Введіть назву" />
+                                                    <input type="text" name="title_{{$lang->lang}}" value='@if(isset($admin_article)){{ $admin_article->getTranslate('title', $lang->lang) }}@endif' id="form-field-3" placeholder="{{ trans('backend.title') }}" />
                                                 </div>
                                             </div>
                                         @endif
@@ -260,18 +375,118 @@
                                                             <label class="control-label" for="form-field-2">{{ $key }}</label>
 
                                                             <div class="controls">
-                                                                <input type="text" name='attributes[{{ $key }}_{{$lang->lang}}]' value='{{ $attributes -> {$key .'_'. $lang->lang} or ''}}' id="form-field-{{ $key }}" placeholder="{{ $key }}" />
+                                                                <input type="text" name='attributes[{{ $key }}_{{$lang->lang}}]' value='@if(isset($admin_article)){{ $admin_article->getAttributeTranslate($key, $lang->lang) }}@endif' id="form-field-{{ $key }}" placeholder="{{ $key }}" />
                                                             </div>
                                                         </div>
                                                     @elseif ($attribute->type == 'textarea' )
                                                         <h4 class="header blue clearfix">{{ $key }}</h4>
                                                         <div class="control-group">
-                                                            <textarea name='attributes[{{ $key }}_{{$lang->lang}}]' class="span12" id="form-field-{{ $key }}" placeholder="Текст">{{ $attributes -> {$key .'_'. $lang->lang} or ''}}</textarea>
+                                                            <textarea name='attributes[{{ $key }}_{{$lang->lang}}]' class="span12" id="form-field-{{ $key }}" placeholder="Текст">{{ $admin_article->getAttributeTranslate($key, $lang->lang) }}</textarea>
                                                         </div>
                                                     @elseif ($attribute->type == 'textarea-no-wysiwyg' )
                                                         <h4 class="header blue clearfix">{{ $key }}</h4>
                                                         <div class="control-group">
-                                                            <textarea name='attributes[{{ $key }}_{{$lang->lang}}]' class="span12 no-wysiwyg" id="form-field-{{ $key }}" placeholder="Текст">{{ $attributes -> {$key .'_'. $lang->lang} or ''}}</textarea>
+                                                            <textarea name='attributes[{{ $key }}_{{$lang->lang}}]' class="span12 no-wysiwyg" id="form-field-{{ $key }}" placeholder="Текст">{{ $admin_article->getAttributeTranslate($key, $lang->lang) }}</textarea>
+                                                        </div>
+                                                    @elseif ($attribute->type == 'files' )
+                                                        <div class="control-group">
+                                                            <label class="control-label" for="id-date-picker-1">{{ $key }}</label>
+                                                            @if(isset($admin_article) && $admin_article->getAttributeTranslate($key, $lang->lang))
+                                                                <div class="controls show-image">
+                                                                    <div class="row-fluid">
+                                                                        <div class="span3">
+                                                                            <div class="profile-activity clearfix" style="border-bottom: none">
+                                                                                <div>
+                                                                                    <img class="pull-left" alt="#" style="max-width:200px;border-radius:0%" src="{{ asset( $admin_article->getAttributeTranslate($key, $lang->lang)) }}">
+                                                                                    <input type="hidden" name="saved-files-path[{{ $key . '_' . $lang->lang }}]" value="{{ $admin_article->getAttributeTranslate($key, $lang->lang) }}">
+                                                                                </div>
+
+                                                                                <div class="tools action-buttons">
+                                                                                    <a href="#" class="blue">
+                                                                                        <i class="icon-pencil bigger-125 image-edit" ></i>
+                                                                                    </a>
+
+                                                                                    <a href="#" class="red">
+                                                                                        <i class="icon-remove bigger-125 image-close"></i>
+                                                                                    </a>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="controls image-upload" style="display:none">
+                                                                    <div class="row-fluid">
+                                                                        <div class="span6">
+                                                                            <div class="widget-box">
+                                                                                <div class="widget-header">
+                                                                                    <h4>{{ $key }}</h4>
+                                                                                    <span class="widget-toolbar">
+                                                                                        <a href="#" data-action="collapse">
+                                                                                            <i class="icon-chevron-up"></i>
+                                                                                        </a>
+                                                                                        {{-- <a href="#" data-action="close">
+                                                                                             <i class="icon-remove"></i>
+                                                                                         </a>--}}
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="widget-body">
+                                                                                    <div class="widget-main">
+                                                                                        {{--
+                                                                                         <div class="ace-file-input"><input type="file" name="img" id="id-input-file-2"><label data-title="Choose"><span data-title="No File ..."><i class="icon-upload-alt"></i></span></label><a class="remove" href="#"><i class="icon-remove"></i></a></div>
+                                                                                        --}}
+                                                                                        <div class="ace-file-input ace-file-multiple">
+                                                                                            <input name='attributes[{{ $key }}_{{$lang->lang}}]' type="file" id="id-input-file-{{$lang->lang}}">
+                                                                                            <a class="remove" href="#"><i class="icon-remove"></i></a>
+                                                                                        </div>
+                                                                                        {{--<label>
+                                                                                            <input type="checkbox" name="file-format" id="id-file-format">
+                                                                                            <span class="lbl"> Allow only images</span>
+                                                                                        </label>--}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @else
+                                                                <div class="controls">
+                                                                    <div class="row-fluid">
+                                                                        <div class="span4">
+                                                                            <div class="widget-box collapsed">
+                                                                                <div class="widget-header">
+                                                                                    <h4>{{ trans('backend.img') }}</h4>
+                                                                                    <span class="widget-toolbar">
+                                                                                        <a href="#" data-action="collapse">
+                                                                                            <i class="icon-chevron-up"></i>
+                                                                                        </a>
+                                                                                        {{-- <a href="#" data-action="close">
+                                                                                             <i class="icon-remove"></i>
+                                                                                         </a>--}}
+                                                                                    </span>
+                                                                                </div>
+                                                                                <div class="widget-body">
+                                                                                    <div class="widget-main">
+                                                                                        {{--
+                                                                                         <div class="ace-file-input"><input type="file" name="img" id="id-input-file-2"><label data-title="Choose"><span data-title="No File ..."><i class="icon-upload-alt"></i></span></label><a class="remove" href="#"><i class="icon-remove"></i></a></div>
+                                                                                        --}}
+                                                                                        <div class="ace-file-input ace-file-multiple">
+                                                                                            <input name='attributes[{{ $key }}_{{$lang->lang}}]' type="file" id="id-input-file-{{$lang->lang}}">
+                                                                                            <input type="hidden" name="saved-files-path[]" value="">
+
+
+                                                                                            <a class="remove" href="#"><i class="icon-remove"></i></a>
+                                                                                        </div>
+                                                                                        {{--<label>
+                                                                                            <input type="checkbox" name="file-format" id="id-file-format">
+                                                                                            <span class="lbl"> Allow only images</span>
+                                                                                        </label>--}}
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            @endif
                                                         </div>
                                                     @endif
                                                 @endif
@@ -303,22 +518,22 @@
                                                 <label class="control-label" for="form-field-tags">META Keywords</label>
 
                                                 <div class="controls">
-                                                    <input type="text" name="meta_keywords_{{$lang->lang}}" class="form-field-tags" value="@if(isset($admin_article)){{ $admin_article->getTranslate('meta_keywords',$lang->lang)}}@endif" placeholder="Введіть ключові слова ..." />
+                                                    <input type="text" name="meta_keywords_{{$lang->lang}}" class="form-field-tags" value="@if(isset($admin_article)){{ $admin_article->getTranslate('meta_keywords',$lang->lang)}}@endif" placeholder="{{ trans('backend.keywords') }}" />
                                                 </div>
                                             </div>
                                         @endif
                                         @if($admin_category->hasField('short_description'))
-                                            <h4 class="header blue clearfix">Короткий опис</h4>
+                                            <h4 class="header blue clearfix">{{ trans('backend.short_description_category') }}</h4>
                                             <div class="control-group">
-                                                <textarea name="short_description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="Короткий опис вакансії, новини, слайда і т. д.">@if(isset($admin_article)){{ $admin_article->getTranslate('short_description',$lang->lang) }}@endif</textarea>
+                                                <textarea name="short_description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="{{ trans('backend.short_description_category') }}">@if(isset($admin_article)){{ $admin_article->getTranslate('short_description',$lang->lang) }}@endif</textarea>
 
 
                                             </div>
                                         @endif
                                         @if($admin_category->hasField('description'))
-                                            <h4 class="header blue clearfix">Текст</h4>
+                                            <h4 class="header blue clearfix">{{ trans('backend.description_category') }}</h4>
                                             <div class="control-group">
-                                                <textarea name="description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="Повний опис вакансії, новини, слайда і т. д.">@if(isset($admin_article)){{ $admin_article->getTranslate('description',$lang->lang) }}@endif</textarea>
+                                                <textarea name="description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="{{ trans('backend.description_category') }}">@if(isset($admin_article)){{ $admin_article->getTranslate('description',$lang->lang) }}@endif</textarea>
 
 
                                             </div>
@@ -330,7 +545,7 @@
                                 @if ($admin_category->hasField('gallery'))
                                     @if(isset($admin_article))
                                         <h4 class="header green clearfix">
-                                            Gallery
+                                            {{ trans('backend.gallery') }}
                                         </h4>
                                         <iframe
                                                 frameborder="0"
@@ -345,9 +560,7 @@
                                                 <i class="icon-remove"></i>
                                             </button>
                                             <strong>Увага!</strong>
-
-                                            Форма завантаження файлів до галереї буде доступною після створення даного запису (при наступному редагуванні)
-                                            <br>
+                                            {{ trans('backend.form_gallery') }}                                            <br>
                                         </div>
                                     @endif
                                 @endif
@@ -364,7 +577,7 @@
                     <div class="form-actions">
                         <button class="btn btn-info resource-save" type="button">
                             <i class="icon-ok bigger-110"></i>
-                            Сохранить
+                            {{ trans('backend.save') }}
                         </button>
                     </div><!--<input type="button" class='article-save' value="Сохранить">-->
                 </form>

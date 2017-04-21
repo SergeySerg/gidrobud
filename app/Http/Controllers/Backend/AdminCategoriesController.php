@@ -127,7 +127,7 @@ class AdminCategoriesController extends Controller {
 		//JSON respons when entry in DB successfully
 		return response()->json([
 			"status" => 'success',
-			"message" => 'Успішно збережено',
+			"message" => 'Успешно сохранено',
 			"redirect" => route('admin_dashboard')
 		]);
 	}
@@ -269,7 +269,7 @@ class AdminCategoriesController extends Controller {
 		//JSON respons when entry in DB successfully
 		return response()->json([
 			"status" => 'success',
-			"message" => 'Успішно збережено',
+			"message" => 'Успешно сохранено',
 			"redirect" => route('admin_dashboard')
 		]);
 	}
@@ -295,7 +295,7 @@ class AdminCategoriesController extends Controller {
 			Storage::deleteDirectory('upload/categories/' . $id);
 			return response()->json([
 				"status" => 'success',
-				"message" => 'Успішно видалено',
+				"message" => 'Успешно удалено',
 				"redirect" => URL::route('admin_dashboard')
 			]);
 		}

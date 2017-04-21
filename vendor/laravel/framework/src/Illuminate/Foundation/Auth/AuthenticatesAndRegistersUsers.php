@@ -96,7 +96,7 @@ trait AuthenticatesAndRegistersUsers {
 	 */
 	protected function getFailedLoginMessage()
 	{
-		return 'Невірно введений логін або пароль';
+		return trans('passwords.invalid_password');
 	}
 
 	/**

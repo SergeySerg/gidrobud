@@ -4,12 +4,12 @@
 @section('breadcrumbs')
     <li>
         <i class="icon-home home-icon"></i>
-        <a href="{{ route('admin_dashboard') }}">Головна</a>
+        <a href="{{ route('admin_dashboard') }}">{{ trans('backend.main') }}</a>
         <span class="divider">
             <i class="icon-angle-right arrow-icon"></i>
         </span>
     </li>
-    <li class="active">Налаштування</li>
+    <li class="active">{{ trans('backend.settings') }}</li>
 @stop
 
 @section('content')
@@ -19,14 +19,14 @@
             <div class="span12">
                 <!--PAGE CONTENT BEGINS-->
                 <div class="row-fluid">
-                    <h3 class="header smaller lighter blue">Налаштування</h3>
+                    <h3 class="header smaller lighter blue">{{ trans('backend.settings') }}</h3>
 
                     <div class="table-header">
-                        Список елементів налаштуванння
+                        {{ trans('backend.list_in_setting') }}
                         <a href="{{ route('settings_create') }}">
                             <button class="btn btn-warning">
                                 <i class="icon-plus"></i>
-                                Додати елемент
+                                {{ trans('backend.add_elements') }}
                             </button>
                         </a>
                     </div>
@@ -38,13 +38,13 @@
                                 ID
                             </th>
                             <th class="center">
-                                Поле
+                                {{ trans('backend.field') }}
                             </th>
                             <th class="center">
-                                Значення
+                                {{ trans('backend.item') }}
                             </th>
                             <th class="hidden-phone center">
-                                Альтернативна назва
+                                {{ trans('backend.altern') }}
                             </th>
 
                             <th></th>
@@ -82,13 +82,13 @@
                         <h4 class="pink">
 
                             <a href="#modal-table" role="button" class="green" data-toggle="modal">
-                                <i class="icon-trash icon icon-only"></i> Видалені значення
+                                <i class="icon-trash icon icon-only"></i> {{ trans('backend.delete') }}
                             </a>
                             <div id="modal-table" class="modal hide fade" tabindex="-1">
                                 <div class="modal-header no-padding">
                                     <div class="table-header">
                                         <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                        Видалені значення
+                                        {{ trans('backend.delete') }}
                                     </div>
                                 </div>
 
@@ -97,9 +97,9 @@
                                         <table class="table table-striped table-bordered table-hover no-margin-bottom no-border-top" style="font-size: 10px">
                                             <thead>
                                             <tr>
-                                                <th>Поле</th>
-                                                <th>Значення</th>
-                                                <th>Альтернативна назва</th>
+                                                <th>{{ trans('backend.field') }}</th>
+                                                <th>{{ trans('backend.item') }}</th>
+                                                <th>{{ trans('backend.altern') }}</th>
 
                                                 <th>
                                                     <i class="icon-time bigger-110"></i>
@@ -128,12 +128,12 @@
                                     <a href="{{ route('settings_delete')}}">
                                         <button class="btn btn-small btn-danger pull-left">
                                             <i class="icon-remove"></i>
-                                            Остаточне видадення
+                                            {{ trans('backend.delete_end') }}
                                         </button>
                                     </a>
                                     <a href="{{ route('settings_recovery')}}">
                                         <button class="btn btn-small btn-success btn-small">
-                                            Відновити записи
+                                            {{ trans('backend.recovery') }}
                                             <i class="icon-undo"></i>
                                         </button>
                                     </a>

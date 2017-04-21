@@ -71,7 +71,7 @@ class AdminSettingsController extends Controller {
 		//JSON respons when entry in DB successfully
 		return response()->json([
 			"status" => 'success',
-			"message" => 'Успішно збережено',
+			"message" => 'Успешно сохранено',
 			"redirect" => URL::route('settings_index')
 		]);
 	}
@@ -133,7 +133,7 @@ class AdminSettingsController extends Controller {
 		//JSON respons when entry in DB successfully
 		return response()->json([
 			"status" => 'success',
-			"message" => 'Успішно збережено',
+			"message" => 'Успешно сохранено',
 			"redirect" => URL::route('settings_index')
 		]);
 	}
@@ -146,7 +146,7 @@ class AdminSettingsController extends Controller {
 		if($setting AND $setting->delete()){
 			return response()->json([
 				"status" => 'success',
-				"message" => 'Успішно видалено'
+				"message" => 'Успешно удалено'
 			]);
 		}
 		else{

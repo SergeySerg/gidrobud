@@ -24,7 +24,6 @@ class AdminTextsController extends Controller {
 
 	public function index()
 	{
-		App::setLocale('ua');
 		$admin_texts = Text::all()
 			->sortByDesc("priority");
 		// List of Softdeletes items
@@ -70,7 +69,7 @@ class AdminTextsController extends Controller {
 		//JSON respons when entry in DB successfully
 		return response()->json([
 			"status" => 'success',
-			"message" => 'Успішно збережено',
+			"message" => 'Успешно сохранено',
 			"redirect" => URL::route('text_index')
 		]);
 	}
@@ -122,7 +121,7 @@ class AdminTextsController extends Controller {
 		//JSON respons when entry in DB successfully
 		return response()->json([
 			"status" => 'success',
-			"message" => 'Успішно збережено',
+			"message" => 'Успешно сохранено',
 			"redirect" => URL::route('text_index')
 		]);
 	}
@@ -135,7 +134,7 @@ class AdminTextsController extends Controller {
 		if($text AND $text->delete()){
 			return response()->json([
 				"status" => 'success',
-				"message" => 'Успішно видалено'
+				"message" => 'Успешно удалено'
 			]);
 		}
 		else{

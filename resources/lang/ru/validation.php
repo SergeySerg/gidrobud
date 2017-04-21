@@ -34,7 +34,7 @@ return [
 	"different"            => "The :attribute and :other must be different.",
 	"digits"               => "The :attribute must be :digits digits.",
 	"digits_between"       => "The :attribute must be between :min and :max digits.",
-	"email"                => " :attribute повинен бути дійсна адреса електронної пошти.",
+	"email"                => "Поле :attribute должно быть дествующим адресом электронной почты",
 	"filled"               => " :attribute поле обязательно для заполнения.",
 	"exists"               => "The selected :attribute is invalid.",
 	"image"                => "The :attribute must be an image.",
@@ -104,8 +104,8 @@ return [
 
 	'attributes' => [
 		'name' => 'Имя',
-		'phone' => 'Телефон',
-		'comment' => 'Сообщение'
+		'email' => 'E-mail',
+		'text' => 'Сообщение'
 	],
 
 ];

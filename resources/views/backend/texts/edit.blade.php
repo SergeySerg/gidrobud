@@ -3,14 +3,14 @@
 @section('breadcrumbs')
 <li>
     <i class="icon-home home-icon"></i>
-    <a href="{{ route('admin_dashboard') }}">Головна</a>
+    <a href="{{ route('admin_dashboard') }}">{{ trans('backend.main') }}</a>
         <span class="divider">
             <i class="icon-angle-right arrow-icon"></i>
         </span>
 </li>
 
 <li>
-    <a href="{{ route('text_index') }}">Текстові блоки</a>
+    <a href="{{ route('text_index') }}">{{ trans('backend.texts') }}</a>
 
         <span class="divider">
             <i class="icon-angle-right arrow-icon"></i>
@@ -26,7 +26,7 @@
 <div class="page-content">
     <div class="page-header position-relative">
         <h1>
-            Редагувати
+            {{ trans('backend.edit') }}
         </h1>
     </div><!--/.page-header-->
 
@@ -40,7 +40,7 @@
 
                 <h4 class="pink">
                     <i class="icon-hand-right icon-animated-hand-pointer blue"></i>
-                    <a href="#modal-table" role="button" class="green" data-toggle="modal"> Відкрити детальну форму редагування </a>
+                    <a href="#modal-table" role="button" class="green" data-toggle="modal"> Открыть подробную форму редактирования </a>
                 </h4>
 
                 <div class="hr hr-18 dotted hr-double"></div>
@@ -49,7 +49,7 @@
                     <div class="modal-header no-padding">
                         <div class="table-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            Додаткові параметри даного блоку
+                            Дополнительние параметры данного блока
                         </div>
                     </div>
 
@@ -57,15 +57,15 @@
                         <div class="row-fluid">
                             <div class="space-12"></div>
                             <div class="control-group">
-                                <label class="control-label" for="type">Тип блоку</label>
+                                <label class="control-label" for="type">Тип блока</label>
 
                                 <div class="controls">
                                     {{--<input type="text" name="type" value='{{$admin_text->type}}' />--}}
                                     <select name="type">
                                         <option>
-                                            </option><option value="input" @if($admin_text->type == 'input')selected="selected"@endif>Звичайне поле
-                                            </option><option value="textarea" @if($admin_text->type == 'textarea')selected="selected"@endif>Текстове поле
-                                            </option><option value="textarea-no-wysiwyg" @if($admin_text->type == 'textarea-no-wysiwyg')selected="selected"@endif>Текстове поле (без редактора)
+                                            </option><option value="input" @if($admin_text->type == 'input')selected="selected"@endif>Обычное поле
+                                            </option><option value="textarea" @if($admin_text->type == 'textarea')selected="selected"@endif>Текстовое поле
+                                            </option><option value="textarea-no-wysiwyg" @if($admin_text->type == 'textarea-no-wysiwyg')selected="selected"@endif>Текстовое поле (без редактора)
                                         </option>
                                     </select>
                                 </div>
@@ -73,38 +73,38 @@
 
 
                             <div class="control-group">
-                                <label class="control-label" for="title">Назва блоку</label>
+                                <label class="control-label" for="title">Название блока</label>
 
                                 <div class="controls">
-                                    <input type="text" name="title" value='{{$admin_text->title}}' placeholder="Назва блоку" />
+                                    <input type="text" name="title" value='{{$admin_text->title}}' placeholder=">Название блока" />
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label" for="title">Альтернативна назва блоку</label>
+                                <label class="control-label" for="title">Альтернативное название блока</label>
 
                                 <div class="controls">
-                                    <input type="text" name="name" value='{{$admin_text->name}}' placeholder="Альтернативна назва блоку" />
+                                    <input type="text" name="name" value='{{$admin_text->name}}' placeholder="Альтернативное название блока" />
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label" for="priority">Пріоритет</label>
+                                <label class="control-label" for="priority">Приоритет</label>
 
                                 <div class="controls">
-                                    <input type="text" name="priority" value='{{$admin_text->priority}}' placeholder="Пріоритет" />
+                                    <input type="text" name="priority" value='{{$admin_text->priority}}' placeholder="Приоритет" />
                                 </div>
                             </div>
 
                             <div class="control-group">
-                                <label class="control-label" for="lang_active">Багатомовність</label>
+                                <label class="control-label" for="lang_active">Мультиязычность</label>
 
                                 <div class="controls">
                                     {{--<input type="text" name="lang_active" value='{{$admin_text->lang_active}}' placeholder="1 або 0" />--}}
                                     <select name="lang_active">
                                         <option>
-                                        </option><option value="1" @if($admin_text->lang_active)selected="selected"@endif>На декількох мовах
-                                        </option><option value="0" @if(!$admin_text->lang_active)selected="selected"@endif>Одне значення на всі мови
+                                        </option><option value="1" @if($admin_text->lang_active)selected="selected"@endif>На днескольки языках
+                                        </option><option value="0" @if(!$admin_text->lang_active)selected="selected"@endif>Одно значение для всех языков
                                         </option></select>
                                 </div>
                             </div>
@@ -131,12 +131,12 @@
                         @elseif ($admin_text->type == 'textarea' )
                             <h4 class="header blue clearfix">{{$admin_text->title}}</h4>
                             <div class="control-group">
-                                <textarea name="description" class="span12" id="description" placeholder="Опис">{{ $admin_text->description }}</textarea>
+                                <textarea name="description" class="span12" id="description" placeholder="Описание">{{ $admin_text->description }}</textarea>
                             </div>
                         @elseif ($admin_text->type == 'textarea-no-wysiwyg' )
                             <h4 class="header blue clearfix">{{$admin_text->title}}</h4>
                             <div class="control-group">
-                                <textarea name="description" class="span12 no-wysiwyg" id="description" placeholder="Опис">{{ $admin_text->description }}</textarea>
+                                <textarea name="description" class="span12 no-wysiwyg" id="description" placeholder="Описание">{{ $admin_text->description }}</textarea>
                             </div>
                         @endif
 
@@ -173,7 +173,7 @@
                                 @elseif ($admin_text->type == 'textarea-no-wysiwyg' )
                                     <h4 class="header blue clearfix">{{$admin_text->title}}</h4>
                                     <div class="control-group">
-                                        <textarea name="description_{{$lang->lang}}" class="span12 no-wysiwyg" id="description_{{$lang->lang}}" placeholder="Опис">{{ $admin_text->getTranslate('description',$lang->lang) }}</textarea>
+                                        <textarea name="description_{{$lang->lang}}" class="span12 no-wysiwyg" id="description_{{$lang->lang}}" placeholder="Описание">{{ $admin_text->getTranslate('description',$lang->lang) }}</textarea>
                                     </div>
                                 @endif
 

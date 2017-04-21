@@ -12,26 +12,25 @@ return [
 	| you want to customize your views to better match your application.
 	|
 	*/
-	'more' => 'Подробнее',
-	'address' => 'Адрес',
-	'no_product' => 'В этой категории товар отсутствует',
-	'want' => 'Как нас найти?',
-	'gallery' => 'Галерея',
-	'contact' => 'Контакты',
-	'contact_info' => 'Контактная информация',
-	'callback' => 'Обратная связь',
-	'put_name' => 'Имя',
-	'put_email' => 'Введите Ваш e-mail:',
-	'put_phone' => 'Телефон',
-	'phones' => 'Телефоны',
-	'message' => 'Сообщение',
-	'send' => 'Отправить',
-	'share' => 'Поделиться',
-	'last_news' => 'Последние новости',
-	'no_news' => 'Нет ни одной новости',
-	'all_news' => 'Все новости',
+	'about_us' => 'О нас',
+	'prices' => 'Цены',
+	'download' => 'Загрузки',
+	'contacts' => 'Контакты',
+	'our_benefits' => 'Наши преимущества',
+	'our_priced' => 'Наши цены',
+	'home' => 'Главная',
+	'info' => 'Информация',
+	'find_name' => 'Куда будем звонить',
+	'find_placeholder' => 'Введите телефон по которому будете звонить',
+	'find_button' => 'Поиск',
 	/* Script Contact*/
-	'success_send_contact' => 'Ваша заявка успешно отправлена !',
+	'success_send_contact' => 'Ваша заявка успешно отправлена!',
 	'error_send_contact' => 'Возникла ошибка при передачи заявки!',
 	/* /Script Contact*/
+	/*Callback*/
+	'your_name' => 'Ваше имя',
+	'message' => 'Сообщение',
+	'send' => 'Отправить',
+	'error' => 'Ошибка подключения'
+	/*/Callback*/
 ];

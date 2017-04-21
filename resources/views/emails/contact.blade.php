@@ -16,20 +16,20 @@
 	-webkit-box-shadow: 0 1px 2px #d1d1d1;
 	box-shadow: 0 1px 2px #d1d1d1;">
     <tr >
-        <td colspan="2" style="text-align: center;">Зв'яжіться будь ласка зі мною </td>
+        <td colspan="2" style="text-align: center;font-style:italic;">Свяжитесь пожалуйста с нами </td>
     </tr>
 
     <tr>
-        <td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">ПІБ  </td>
+        <td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">Имя</td>
         <td style="border-bottom: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">{{ $name }}</td>
     </tr>
     <tr>
-        <td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; padding: 7px 17px;">Телефон</td>
-        <td style="border-bottom: 1px solid #e0e0e0; padding: 7px 17px;">{{ $phone }}</td>
+        <td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; padding: 7px 17px;">Email</td>
+        <td style="border-bottom: 1px solid #e0e0e0; padding: 7px 17px;">{{ $email }}</td>
     </tr>
     <tr>
-        <td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">Тематика </td>
-        <td style="border-bottom: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">{{ $comment }}</td>
+        <td style="border-bottom: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">Сообщение</td>
+        <td style="border-bottom: 1px solid #e0e0e0; background: #fafafa;  padding: 7px 17px;">{{ $text }}</td>
     </tr>
 
 </table>

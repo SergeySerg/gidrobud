@@ -56,10 +56,10 @@
 
 	@if (count($errors) > 0)
 	<div class="alert alert-danger">
-		<strong>Помилка</strong> Не вдалось надіслати.<br><br>
+		<strong>{{ trans('passwords.error') }}</strong> {{ trans('passwords.not_send') }}<br><br>
 		<ul>
 			@foreach ($errors->all() as $error)
-			<li>{{ $error }}</li>
+				<li>{{ $error }}</li>
 			@endforeach
 		</ul>
 	</div>
@@ -69,12 +69,12 @@
 			<div class="widget-main">
 				<h4 class="header red lighter bigger">
 					<i class="icon-key"></i>
-					Відновлення паролю
+					{{ trans('passwords.recovery_pass') }}
 				</h4>
 
 				<div class="space-6"></div>
 				<p>
-					Ведіть свою адресу елетронної пошти і отримайте інструкцію
+					{{ trans('passwords.get_instruction') }}
 				</p>
 
 				<form role="form" method="POST" action="{{ url('/password/email') }}"/>
@@ -90,7 +90,7 @@
 					<div class="clearfix">
 						<button class="width-35 pull-right btn btn-small btn-danger">
 							<i class="icon-lightbulb"></i>
-							Надіслати
+							{{ trans('passwords.send') }}
 						</button>
 					</div>
 				</fieldset>
@@ -99,7 +99,7 @@
 
 			<div class="toolbar center">
 				<a href="{{ url('/auth/login') }}"  class="back-to-login-link">
-					Повернутися до логування
+					{{ trans('passwords.back_login') }}
 					<i class="icon-arrow-right"></i>
 				</a>
 			</div>

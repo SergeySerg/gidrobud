@@ -35,6 +35,15 @@ class Article extends Translate {
         return $this->hasMany('App\Models\Article', 'article_id');
     }
 
+    /*public function getAttributes($key, $lang){
+        if(isset($this->attributes)){
+            $attributes = json_decode($this->attributes, true);
+            if(is_array($attributes)){
+
+            }
+        }
+    }*/
+
     public function getImages(){
         if (isset($this->imgs)){
             $imgs = json_decode($this->imgs, true);

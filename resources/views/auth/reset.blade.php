@@ -5,11 +5,11 @@
 	<div class="row">
 		<!--<div class="col-md-8 col-md-offset-2">-->
 			<div class="panel panel-default">
-				<div class="panel-heading">Скидання пароля</div>
+				<div class="panel-heading">{{ trans('passwords.reset_pass') }}</div>
 				<div class="panel-body">
 					@if (count($errors) > 0)
 						<div class="alert alert-danger">
-							<strong>Помилка</strong> Невірний email або пароль<br><br>
+							<strong>{{ trans('passwords.error') }}</strong> {{ trans('passwords.invalid_password') }}<br><br>
 							<ul>
 								@foreach ($errors->all() as $error)
 									<li>{{ $error }}</li>
@@ -30,14 +30,14 @@
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Password</label>
+							<label class="col-md-4 control-label">{{ trans('passwords.pass') }}</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password">
 							</div>
 						</div>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">Confirm Password</label>
+							<label class="col-md-4 control-label">{{ trans('passwords.conf_pass') }}</label>
 							<div class="col-md-6">
 								<input type="password" class="form-control" name="password_confirmation">
 							</div>
@@ -46,7 +46,7 @@
 						<div class="form-group">
 							<div class="col-md-6 col-md-offset-4">
 								<button type="submit" class="btn btn-primary">
-									Скидання пароля
+									{{ trans('passwords.reset_pass') }}
 								</button>
 							</div>
 						</div>

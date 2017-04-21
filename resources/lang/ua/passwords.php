@@ -13,10 +13,28 @@ return [
 	|
 	*/
 
-	"password" => "Passwords must be at least six characters and match the confirmation.",
-	"user" => "We can't find a user with that e-mail address.",
-	"token" => "This password reset token is invalid.",
+	"password" => "Паролі повинні бути не менше шести символів і відповідати підтвердженню.",
+	"user" => "Ми не можемо знайти користувача з цією електронною поштою.",
+	"token" => "Цей токен скидання пароля недійсний.",
 	"sent" => "Ми відправили Вам на пошту посилання на скидання паролю!",
-	"reset" => "Your password has been reset!",
-
+	"reset" => "Ваш пароль був скинутий!",
+	"login" => "Введіть логін та пароль",
+	"error" => "Помилка",
+	"not_enter" => "Не вдалося увійти",
+	"remember" => "Запам'ятати мене",
+	"remember_password" => "Забули пароль?",
+	"invalid_password" => "Невірно введений логін або пароль",
+	"not_send" => "Не вдалося відправити",
+	"recovery_pass" => "Відновлення паролю",
+	"get_instruction" => "Введіть свою адресу електронної пошти і отримате інструкцію",
+	"send" => "Відправити",
+	"back_login" => "Повернутися до логування",
+	"problem_input" => "Виникли проблеми при вході",
+	"reg_new_user" => "Реєстрація нового користувача",
+	"put_data" => "Введіть дані для реєстрації",
+	"reset_data" => "Скидання",
+	"registration" => "Реєстрація",
+	"pass" => "Пароль",
+	"conf_pass" => "Повторіть пароль",
+	"reset_pass" => "Скидання пароля",
 ];

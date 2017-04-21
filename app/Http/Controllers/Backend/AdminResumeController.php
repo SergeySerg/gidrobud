@@ -111,7 +111,7 @@ class AdminResumeController extends Controller {
 
 			return response()->json([
 				"status" => 'success',
-				"message" => 'Успішно видалено'
+				"message" => 'Успешно удалено'
 			]);
 		}
 		else{

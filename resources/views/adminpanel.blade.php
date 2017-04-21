@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Nextsite | Панель керування</title>
+    <title>Админ.панель</title>
 
     <link rel="shortcut icon" href="{{ asset('/img/favicon/favicon.png') }}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{ asset('/img/favicon/apple-touch-icon.png') }}">
@@ -82,10 +82,10 @@
         <div class="container-fluid">
             <a href="{{ route('admin_dashboard') }}" class="brand">
                 {{--<i class="icon-leaf"></i>--}}
-               <img style="display: block;position: absolute;margin-top: -3px;" width="30px" src="{{ asset('/img/backend/logo.png') }}" alt="{{$_SERVER['HTTP_HOST']}}" />
-                <small style="margin-left: 40px;">
+               <img style="display: block;position: absolute;margin-top: -3px;" width="80px" src="{{ asset('/img/backend/logo.png') }}" alt="{{$_SERVER['HTTP_HOST']}}" />
+                {{--<small style="margin-left: 40px;">
                     {{$_SERVER['HTTP_HOST']}}
-                </small>
+                </small>--}}
             </a><!--/.brand-->
 
             <ul class="nav ace-nav pull-right">
@@ -94,7 +94,7 @@
                     <a data-toggle="dropdown" href="#" class="dropdown-toggle">
                         <img class="nav-user-photo" src="{{ asset('/img/backend/avatar.jpg') }}" alt="Admin" />
 								<span class="user-info">
-									<small>Вітаю,</small>
+									<small>{{ trans('backend.welcome') }},</small>
 									{{ Auth::user()->name }}
 								</span>
 
@@ -105,7 +105,7 @@
                         <li>
                              <a target="_blank" href="{{ asset('/') }}">
                                  <i class="icon-cog"></i>
-                                 Перейти на сайт
+                                 {{ trans('backend.go_to_site') }}
                              </a>
                          </li>
                         <!--  <li>
@@ -138,7 +138,7 @@
     <div class="sidebar hidden-print" id="sidebar">
         <div class="sidebar-shortcuts" id="sidebar-shortcuts">
             <div class="sidebar-shortcuts-large">
-                Меню адмін панелі
+                {{ trans('backend.menu') }}
             </div>
 
             <div class="sidebar-shortcuts-mini" id="sidebar-shortcuts-mini">
@@ -156,7 +156,7 @@
             <li @if( isset($type) && (Request::is('*/'.$type.'') OR Request::is('*/'.$type.'/*'))) class="active open" @endif>
                 <a href="#" class="dropdown-toggle">
                     <i class="icon-list"></i>
-                    <span class="menu-text"> Категорії </span>
+                    <span class="menu-text"> {{ trans('backend.categories') }} </span>
 
                     <b class="arrow icon-angle-down"></b>
                 </a>
@@ -232,7 +232,7 @@
                             <a href="{{ route('admin_categories_create') }}">
                                 <button style="float:left" class="btn btn-small btn-warning">
                                     <i class="icon-plus"></i>
-                                    Додати категорию
+                                    {{ trans('backend.add_category') }}
                                 </button>
                             </a>
                         </li>
@@ -245,14 +245,14 @@
             <li @if(Request::is('*/texts'))class="active"@endif>
                 <a href="{{ route('text_index') }}">
                     <i class="icon-list-alt"></i>
-                    <span class="menu-text"> Текстові блоки </span>
+                    <span class="menu-text"> {{ trans('backend.texts') }} </span>
                 </a>
             </li>
 
             <li @if(Request::is('*/settings'))class="active"@endif>
                 <a href="{{ route('settings_index') }}">
                     <i class="icon-cog"></i>
-                    <span class="menu-text"> Налаштування </span>
+                    <span class="menu-text"> {{ trans('backend.settings') }} </span>
                 </a>
             </li>
 
@@ -515,7 +515,7 @@
             //
         });
 
-        $('#id-input-file-3').ace_file_input({
+        $('#id-input-file-ua,#id-input-file-ru,#id-input-file-en,#id-input-file-3').ace_file_input({
             style:'well',
             btn_choose:'Drop files here or click to choose',
             btn_change:null,

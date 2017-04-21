@@ -3,19 +3,19 @@
 @section('breadcrumbs')
     <li>
         <i class="icon-home home-icon"></i>
-        <a href="{{ $url }}/">Головна</a>
+        <a href="{{ $url }}/">{{ trans('backend.main') }}</a>
         <span class="divider">
             <i class="icon-angle-right arrow-icon"></i>
         </span>
     </li>
-    {{ isset($admin_category) ? "Редагування категорії" : 'Додати категорію' }}
+    {{ isset($admin_category) ? trans('backend.edit_category') : trans('backend.add_category') }}
 @stop
 
 @section('content')
 
     <div class="page-content">
         <div class="page-header position-relative">
-            <h1>{{ isset($admin_category) ? "Редагування категорії" : 'Додати категорію' }}</h1>
+            <h1>{{ isset($admin_category) ? trans('backend.edit_category') : trans('backend.add_category') }}</h1>
         </div><!--/.page-header-->
         <div class="row-fluid">
             <div class="span12">
@@ -35,35 +35,35 @@
                         <li>
                             <a data-toggle="tab" href="#picture3">
                                 <i class="fa fa-file-image-o fa-fw" aria-hidden="true"></i>
-                                Картинка категории
+                                {{ trans('backend.img_category') }}
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#active13">
                                 <i class="fa fa-check fa-fw" aria-hidden="true"></i>
-                                Статус
+                                {{ trans('backend.status') }}
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#priority13">
                                 <i class="fa fa-sort-numeric-desc fa-fw" aria-hidden="true"></i>
-                                Пріоритет
+                                {{ trans('backend.priority') }}
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#date13">
                                 <i class="fa fa-calendar fa-fw" aria-hidden="true"></i>
-                                Дата
+                                {{ trans('backend.date') }}
                             </a>
                         </li>
 
                         <li>
                             <a data-toggle="tab" href="#parrent13">
                                 <i class="fa fa-link fa-fw" aria-hidden="true"></i>
-                                Відношення до записів
+                                {{ trans('backend.relation') }}
                             </a>
                         </li>
 
@@ -113,7 +113,7 @@
                                             <div class="span6">
                                                 <div class="widget-box">
                                                     <div class="widget-header">
-                                                        <h4>Картинка категорії</h4>
+                                                        <h4> {{ trans('backend.img_category') }}</h4>
                                                 <span class="widget-toolbar">
                                                     <a href="#" data-action="collapse">
                                                         <i class="icon-chevron-up"></i>
@@ -148,7 +148,7 @@
                                             <div class="span6">
                                                 <div class="widget-box collapsed">
                                                     <div class="widget-header">
-                                                        <h4>Картинка категорії</h4>
+                                                        <h4>{{ trans('backend.img_category') }}</h4>
                                                 <span class="widget-toolbar">
                                                     <a href="#" data-action="collapse">
                                                         <i class="icon-chevron-up"></i>
@@ -261,7 +261,7 @@
                         <div class="tabbable">
                             <ul class="nav nav-tabs" id="myTab2">
                                 @foreach($langs as $lang)
-                                    <li @if(($lang->lang) == 'ua') class="active" @endif >
+                                    <li @if(($lang->lang) == 'ru') class="active" @endif >
                                         <a data-toggle="tab" href="#{{$lang->lang}}">{{$lang->lang}}</a>
                                     </li>
                                 @endforeach
@@ -272,23 +272,23 @@
 
                             @foreach($langs as $lang)
 
-                                <div id="{{$lang->lang}}" @if(($lang->lang) == 'ua') class="tab-pane in active" @else class="tab-pane" @endif>
+                                <div id="{{$lang->lang}}" @if(($lang->lang) == 'ru') class="tab-pane in active" @else class="tab-pane" @endif>
 
                                     <div class="control-group">
-                                        <label class="control-label" for="form-field-3">Назва категорії</label>
+                                        <label class="control-label" for="form-field-3">{{ trans('backend.title_category') }}</label>
                                         <div class="controls">
-                                            <input type="text" name="title_{{$lang->lang}}" value='@if(isset($admin_category)){{ $admin_category->getTranslate('title', $lang->lang) }}@endif' id="form-field-3" placeholder="Назва категорії" />
+                                            <input type="text" name="title_{{$lang->lang}}" value='@if(isset($admin_category)){{ $admin_category->getTranslate('title', $lang->lang) }}@endif' id="form-field-3" placeholder="{{ trans('backend.title_category') }}" />
                                         </div>
                                     </div>
 
-                                    <h4 class="header blue clearfix">Короткий опис</h4>
+                                    <h4 class="header blue clearfix">{{ trans('backend.short_description_category') }}</h4>
                                     <div class="control-group">
-                                        <textarea name="short_description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="Короткий опис категорії">@if(isset($admin_category)){{ $admin_category->getTranslate('short_description',$lang->lang) }}@endif</textarea>
+                                        <textarea name="short_description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="{{ trans('backend.short_description_category') }}">@if(isset($admin_category)){{ $admin_category->getTranslate('short_description',$lang->lang) }}@endif</textarea>
                                     </div>
 
-                                    <h4 class="header blue clearfix">Опис</h4>
+                                    <h4 class="header blue clearfix">{{ trans('backend.description_category') }}</h4>
                                     <div class="control-group">
-                                        <textarea name="description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="Повний опис категорії">@if(isset($admin_category)){{ $admin_category->getTranslate('description',$lang->lang) }}@endif</textarea>
+                                        <textarea name="description_{{$lang->lang}}"class="span12" id="form-field-8" placeholder="{{ trans('backend.description_category') }}">@if(isset($admin_category)){{ $admin_category->getTranslate('description',$lang->lang) }}@endif</textarea>
                                     </div>
 
                                     <h4 class="header blue clearfix">SEO</h4>
@@ -311,7 +311,7 @@
                                         <label class="control-label" for="form-field-tags">META Keywords</label>
 
                                         <div class="controls">
-                                            <input type="text" name="meta_keywords_{{$lang->lang}}" class="form-field-tags" value="@if(isset($admin_category)){{ $admin_category->getTranslate('meta_keywords',$lang->lang)}}@endif" placeholder="Введіть ключові слова ..." />
+                                            <input type="text" name="meta_keywords_{{$lang->lang}}" class="form-field-tags" value="@if(isset($admin_category)){{ $admin_category->getTranslate('meta_keywords',$lang->lang)}}@endif" placeholder="{{ trans('backend.keywords') }}" />
                                         </div>
                                     </div>
                                 </div>
@@ -336,7 +336,7 @@
                                         <i class="icon-remove"></i>
                                     </button>
                                     <strong>Увага!</strong>
-                                    Форма завантаження файлів до галереї буде доступною після створення даного запису (при наступному редагуванні)
+                                    {{ trans('backend.form_gallery') }}
                                     <br>
                                 </div>
                             @endif
@@ -392,14 +392,14 @@
                 <div class="hr hr-18 dotted hr-double"></div>
                 <h4 class="pink">
                     <i class="icon-hand-right icon-animated-hand-pointer blue"></i>
-                    <a href="#modal-table" role="button" id="base" class="green" data-toggle="modal"> Базові атрибути даної категорії </a>
+                    <a href="#modal-table" role="button" id="base" class="green" data-toggle="modal"> {{ trans('backend.base_attr') }} </a>
                 </h4>
                 <div class="hr hr-18 dotted hr-double"></div>
 
                 <div class="hr hr-18 dotted hr-double"></div>
                 <h4 class="pink">
                     <i class="icon-hand-right icon-animated-hand-pointer blue"></i>
-                    <a href="#modal-table-attributes" role="button" class="green" data-toggle="modal"> Додаткові атрибути даної категорії </a>
+                    <a href="#modal-table-attributes" role="button" class="green" data-toggle="modal"> {{ trans('backend.attributes') }} </a>
                 </h4>
                 <div class="hr hr-18 dotted hr-double"></div>
                 <input type="hidden" id="fields" name="fields" @if(isset($admin_category->fields)) value='{{ $admin_category->fields }}'@else value="" @endif/>
@@ -409,7 +409,7 @@
                 <div class="form-actions">
                     <button class="btn btn-info resource-save-category" type="button">
                         <i class="icon-ok bigger-110"></i>
-                        Сохранить
+                        {{ trans('backend.save') }}
                     </button>
                 </div>
                 </form>
@@ -419,7 +419,7 @@
                     <div class="modal-header no-padding">
                         <div class="table-header">
                             <button type="button" class="close" data-dismiss="modal">×</button>
-                            Базові атрибути
+                            {{ trans('backend.base_attributes') }}
                         </div>
                     </div>
 
@@ -429,9 +429,9 @@
                                 <table id="sample-table-1" class="table table-striped table-bordered table-hover">
                                     <thead>
                                     <tr>
-                                        <th class="center">Статус</th>
-                                        <th class="center">Назва поля</th>
-                                        <th class="center">Назва поля в БД</th>
+                                        <th class="center">{{ trans('backend.status') }}</th>
+                                        <th class="center">{{ trans('backend.title_field') }}</th>
+                                        <th class="center">{{ trans('backend.title_field_db') }}</th>
                                     </tr>
                                     </thead>
                                     <tbody>
@@ -444,7 +444,7 @@
                                         </td>
 
                                         <td>
-                                            Назва
+                                            {{ trans('backend.title') }}
                                         </td>
                                         <td>title</td>
                                     </tr>
@@ -457,7 +457,7 @@
                                         </td>
 
                                         <td>
-                                            Короткий опис
+                                            {{ trans('backend.short_description_category') }}
                                         </td>
                                         <td>short_description</td>
                                     </tr>
@@ -470,7 +470,7 @@
                                         </td>
 
                                         <td>
-                                            Опис
+                                            {{ trans('backend.description_category') }}
                                         </td>
                                         <td>description</td>
                                     </tr>
@@ -483,7 +483,7 @@
                                         </td>
 
                                         <td>
-                                            Картинка
+                                            {{ trans('backend.img') }}
                                         </td>
                                         <td>img</td>
                                     </tr>
@@ -496,7 +496,7 @@
                                         </td>
 
                                         <td>
-                                            Галерея
+                                            {{ trans('backend.gallery') }}
                                         </td>
                                         <td>imgs</td>
                                     </tr>
@@ -509,7 +509,7 @@
                                         </td>
 
                                         <td>
-                                            Дата
+                                            {{ trans('backend.date') }}
                                         </td>
                                         <td>date</td>
                                     </tr>
@@ -522,7 +522,7 @@
                                         </td>
 
                                         <td>
-                                            Пріоритет
+                                            {{ trans('backend.priority') }}
                                         </td>
                                         <td>priority</td>
                                     </tr>
@@ -535,7 +535,7 @@
                                         </td>
 
                                         <td>
-                                            Статус
+                                            {{ trans('backend.status') }}
                                         </td>
                                         <td>active</td>
                                     </tr>
@@ -548,9 +548,9 @@
                                         </td>
 
                                         <td>
-                                            Відношення до записів
+                                            {{ trans('backend.relation') }}
                                         </td>
-                                        <td>active</td>
+                                        <td>article_parent</td>
                                     </tr>
                                     <tr>
                                         <td class="center">
@@ -600,7 +600,7 @@
                     <div class="modal-footer">
                         <button class="btn btn-small btn-danger pull-left" data-dismiss="modal">
                             <i class="icon-remove"></i>
-                            Close
+                            {{ trans('backend.close') }}
                         </button>
                     </div>
                 </div>
@@ -610,7 +610,7 @@
                     <div class="modal-header no-padding">
                         <div class="table-header">
                             <button type="button" class="close" data-dismiss="modal">×</button>
-                            Додаткові атрибути
+                            {{ trans('backend.dod_attributes') }}
                         </div>
                     </div>
 
@@ -619,10 +619,10 @@
                             <table id="attributes-list" class="table table-striped table-bordered table-hover no-margin-bottom no-border-top">
                                 <thead>
                                 <tr>
-                                    <th class="center">Назва</th>
-                                    <th class="center">Тип поля</th>
-                                    <th class="center">Багатомовність</th>
-                                    <th class="center">Статус</th>
+                                    <th class="center">{{ trans('backend.title') }}</th>
+                                    <th class="center">{{ trans('backend.type') }}</th>
+                                    <th class="center">{{ trans('backend.multilang') }}</th>
+                                    <th class="center">{{ trans('backend.status') }}</th>
                                     <th class="center"></th>
                                 </tr>
                                 </thead>
@@ -635,8 +635,8 @@
                                 <div class="accordion-group" style="margin-top: 15px">
                                     <div class="accordion-heading">
                                         <a href="#collapseOne" data-parent="#accordion2" data-toggle="collapse" class="accordion-toggle collapsed">
-                                            <span class="badge badge-warning" id="label-add"><i class="icon-plus"></i>&nbsp;&nbsp;Додати новий атрибут</span>
-                                            <span class="badge badge-warning" id="label-edit" style="display: none"><i class="icon-pencil bigger-130"></i>&nbsp;&nbsp;Редагувати атрибут</span>
+                                            <span class="badge badge-warning" id="label-add"><i class="icon-plus"></i>&nbsp;&nbsp;{{ trans('backend.add_new_attr') }}</span>
+                                            <span class="badge badge-warning" id="label-edit" style="display: none"><i class="icon-pencil bigger-130"></i>&nbsp;&nbsp;{{ trans('backend.edit_attr') }}</span>
                                         </a>
                                     </div>
 
@@ -645,29 +645,31 @@
                                             <form class="form-horizontal" id="resource-form-attributes" method="POST" action="" />
 
                                                 <div class="control-group">
-                                                    <label class="control-label" for="title">Назва атрибута</label>
+                                                    <label class="control-label" for="title">{{ trans('backend.name_attr') }}</label>
 
                                                     <div class="controls">
-                                                        <input type="text" required="" name="title" value='' placeholder="Назва атрибута" />
+                                                        <input type="text" required="" name="title" value='' placeholder="{{ trans('backend.name_attr') }}" />
                                                     </div>
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <label class="control-label" for="type">Тип поля атрибута</label>
+                                                    <label class="control-label" for="type">{{ trans('backend.type_field_attr') }}</label>
 
                                                     <div class="controls">
                                                         <select name="type">
                                                             <option>
-                                                            </option><option value="input" selected="selected">Звичайне поле
-                                                            </option><option value="textarea">Текстве поле
-                                                            </option><option value="textarea-no-wysiwyg">Текстве поле(без редактора)
+                                                            </option><option value="input" selected="selected">{{ trans('backend.input') }}
+                                                            </option><option value="checkbox">{{ trans('backend.checkbox') }}
+                                                            </option><option value="textarea">{{ trans('backend.textarea') }}
+                                                            </option><option value="textarea-no-wysiwyg">{{ trans('backend.textarea-no-wysiwyg') }}
+                                                            </option><option value="files">{{ trans('backend.files') }}
                                                             </option>
                                                         </select>
                                                     </div>
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <label class="control-label">Багатомовність</label>
+                                                    <label class="control-label">{{ trans('backend.multilang') }}</label>
                                                     <div class="controls">
                                                         <div class="row-fluid">
                                                             <div class="span3">
@@ -682,7 +684,7 @@
                                                 </div>
 
                                                 <div class="control-group">
-                                                    <label class="control-label">Статус</label>
+                                                    <label class="control-label">{{ trans('backend.status') }}</label>
                                                     <div class="controls">
                                                         <div class="row-fluid">
                                                             <div class="span3">
@@ -699,7 +701,7 @@
                                                 <div class="form-actions">
                                                     <button class="btn btn-info resource-add-attribute" type="button">
                                                         <i class="icon-ok bigger-110"></i>
-                                                        Сохранить
+                                                        {{ trans('backend.save') }}
                                                     </button>
                                                 </div>
                                             </form>
@@ -714,7 +716,7 @@
                     <div class="modal-footer">
                         <button class="btn btn-small btn-danger pull-left" data-dismiss="modal">
                             <i class="icon-remove"></i>
-                            Close
+                            {{ trans('backend.close') }}
                         </button>
 
                     </div>

@@ -4,7 +4,7 @@
 @section('breadcrumbs')
     <li>
         <i class="icon-home home-icon"></i>
-        <a href="{{ $url }}">Головна</a>
+        <a href="{{ $url }}">{{ trans('backend.main') }}</a>
         <span class="divider">
             <i class="icon-angle-right arrow-icon"></i>
         </span>
@@ -44,11 +44,11 @@
                 </h3>
 
                 <div class="table-header">
-                    Список в категорії {{$admin_category->getTranslate('title')}}
+                    {{ trans('backend.list_category') }} {{$admin_category->getTranslate('title')}}
                     <a href="{{ $url }}/articles/{{$type}}/create" class="line_none">
                         <button class="btn btn-warning">
                             <i class="icon-plus"></i>
-                                Додати елемент в категорію {{$admin_category->getTranslate('title')}}
+                            {{ trans('backend.add_element') }} {{$admin_category->getTranslate('title')}}
                         </button>
                     </a>
                 </div>
@@ -58,30 +58,22 @@
                         <th class="center">
                             ID
                         </th>
-                        <th class="center">Назва</th>
+                        <th class="center">{{ trans('backend.title') }}</th>
                         <th class="center hidden-phone">
                             <i class="icon-time bigger-110 hidden-phone"></i>
-                            Дата створення
+                            {{ trans('backend.date_create') }}
                         </th>
                         <th class="center hidden-phone">
                             <i class="icon-time bigger-110 hidden-phone"></i>
-                            Дата оновлення
+                            {{ trans('backend.date_update') }}
                         </th>
 
                        <!-- <th class="hidden-phone">
                             <i class="icon-time bigger-110 hidden-phone"></i>
                             Update
                         </th>-->
-                        @if (Request::is('*/news'))
-                            <th class="hidden-phone">
-                                <i class="icon-time bigger-110 hidden-phone"></i>
-                                Дата публікації
-                            </th>
-                        @else
-                            <th class="hidden-phone">Ціна</th>
-                        @endif
-                        <th class="center">Статус</th>
-                        <th>Пріоритет</th>
+                        <th class="center">{{ trans('backend.status') }}</th>
+                        <th>{{ trans('backend.priority') }}</th>
                         <th></th>
                     </tr>
                     </thead>
@@ -99,11 +91,7 @@
                                 </td>
                                 <td  class="hidden-phone">{{ $admin_article->created_at }}</td>
                                 <td  class="hidden-phone">{{ $admin_article->updated_at }}</td>
-                                @if (Request::is('*/news'))
-                                    <td  class="hidden-phone">{{ $admin_article->date }}</td>
-                                @else
-                                    <td  class="hidden-phone">{{ $admin_article->price }}</td>
-                                @endif
+
                                 <td class="center">
                                     @if($admin_article->active)
                                         <span class="badge badge-success"><i class="icon-ok bigger-120"></i></span>
@@ -172,10 +160,10 @@
 <script>
     $(function(){
         var oTable1 = $('#sample-table-2').dataTable( {
-            "aaSorting": [[6,'desc']],
+            "aaSorting": [[5,'desc']],
             "aoColumns": [
                 { "bSortable": false },
-                null, null,null, null,null, null,
+                null, null,null, null,null,
                 { "bSortable": false }
             ] } );
     });
