@@ -39,14 +39,6 @@ class FrontendInit {
 		foreach($categories as $category){
 			//create arr for categories with type
 			$categories_data[$category->link] = $category;
-			if($category->link == 'page'){
-				$static_page = $category
-					->articles()
-					->where('id', $request->id)
-					->activearticles() // use scopeActiveArticles in Article Model
-					->first();
-				view()->share('static_page', $static_page);
-			}
 			$category_item = $category
 				->articles()
 				->activearticles()
@@ -58,8 +50,8 @@ class FrontendInit {
 			//share Article
 			view()->share($category->link, $category_item);
 		}
-
-		view()->share('static_page', $static_page);
+//dd($category_item);
+		/*view()->share('static_page', $static_page);*/
 
 		// Share to views global template variables
 		view()->share('langs', Lang::all());
