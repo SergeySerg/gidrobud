@@ -12,6 +12,21 @@ return [
 	| you want to customize your views to better match your application.
 	|
 	*/
+	'address' => 'Адреса',
+	'telephone' => 'Телефон',
+	'callback' => 'замовити дзвінок',
+
+	'main' => 'Главна',
+	'company' => 'О компании',
+	'services' => 'Услуги',
+	'project' => 'Проекты',
+	'careers' => 'Вакансии',
+	'license' => 'Лицензии',
+	'contacts' => 'Контакты',
+	'more' => 'подробнее',
+	'our_project' => 'Наші проекти',
+	'all_project' => 'все проекти',
+
 
 	'about_us' => 'Про нас',
 	'prices' => 'Ціни',
