@@ -33,7 +33,7 @@ class ArticleController extends Controller {
 	public function index($lang, $type = 'main')
 	{
 
-		//dd($images_download);
+		//dd($type);
 		//dump($news);
 		//dd($video->category()->first()->active);
 		return view('frontend.'. $type);

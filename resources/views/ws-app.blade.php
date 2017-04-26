@@ -20,7 +20,7 @@
 	<link href="{{ asset('/libs/bootstrap-grid-only/css/grid12.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ asset('/libs/owl-carousel/owl.carousel.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ asset('/libs/owl-carousel/owl.theme.css') }}" rel="stylesheet" type="text/css" media="all" />
-	<link href="{{ asset('/css/frontend/fonts.css"') }}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ asset('/css/frontend/fonts.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ asset('/css/frontend/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ asset('/css/frontend/main.css') }}?ver={{ $version }}" rel="stylesheet" type="text/css" media="all" />
 	<link rel="stylesheet" href="{{ asset('/css/plugins/sweetalert.css') }}">
@@ -54,13 +54,13 @@
 				</div>
 				<div class="col-md-12">
 					<nav class="nav__blue">
-						<a href="index.html" class="nav_item active">{{ trans('base.main') }}</a>
-						<a href="about-us.html" class="nav_item">{{ trans('base.company') }}</a>
-						<a href="services.html" class="nav_item">{{ trans('base.services') }}</a>
-						<a href="project.html" class="nav_item">{{ trans('base.project') }}</a>
-						<a href="vacantions.html" class="nav_item">{{ trans('base.careers') }}</a>
-						<a href="license.html" class="nav_item">{{ trans('base.license') }}</a>
-						<a href="contact.html" class="nav_item">{{ trans('base.contacts') }}</a>
+						<a href="/{{ App::getLocale() }}" class="nav_item @if(Request::is(App::getLocale())) active @endif">{{ trans('base.main') }}</a>
+						<a href="/{{ App::getLocale() }}/company" class="nav_item @if(Request::is('*/company')) active @endif">{{ trans('base.company') }}</a>
+						<a href="/{{ App::getLocale() }}/services" class="nav_item @if(Request::is('*/services')) active @endif">{{ trans('base.services') }}</a>
+						<a href="/{{ App::getLocale() }}/projects" class="nav_item @if(Request::is('*/projects')) active @endif">{{ trans('base.project') }}</a>
+						<a href="/{{ App::getLocale() }}/vacancies" class="nav_item @if(Request::is('*/vacancies')) active @endif">{{ trans('base.careers') }}</a>
+						<a href="/{{ App::getLocale() }}/licenses" class="nav_item @if(Request::is('*/licenses')) active @endif">{{ trans('base.license') }}</a>
+						<a href="/{{ App::getLocale() }}/contacts" class="nav_item @if(Request::is('*/contacts')) active @endif">{{ trans('base.contacts') }}</a>
 					</nav>
 				</div>
 			</div>
@@ -90,17 +90,17 @@
 			</div>
 			<div class="col-md-6">
 				<nav class="footer_nav">
-					<a href="index.html" class="footer_nav-item active">{{ trans('base.main') }}</a>
-					<a href="about-us.html" class="footer_nav-item">{{ trans('base.company') }}</a>
-					<a href="services.html" class="footer_nav-item">{{ trans('base.services') }}</a>
-					<a href="project.html" class="footer_nav-item">{{ trans('base.project') }}</a>
-					<a href="vacantions.html" class="footer_nav-item">{{ trans('base.careers') }}</a>
-					<a href="license.html" class="footer_nav-item">{{ trans('base.license') }}</a>
-					<a href="contact.html" class="footer_nav-item">{{ trans('base.contacts') }}</a>
+					<a href="/{{ App::getLocale() }}" class="footer_nav-item @if(Request::is(App::getLocale())) active @endif">{{ trans('base.main') }}</a>
+					<a href="/{{ App::getLocale() }}/company" class="footer_nav-item @if(Request::is('*/company')) active @endif">{{ trans('base.company') }}</a>
+					<a href="/{{ App::getLocale() }}/services" class="footer_nav-item @if(Request::is('*/services')) active @endif">{{ trans('base.services') }}</a>
+					<a href="/{{ App::getLocale() }}/projects" class="footer_nav-item @if(Request::is('*/projects')) active @endif">{{ trans('base.project') }}</a>
+					<a href="/{{ App::getLocale() }}/vacancies" class="footer_nav-item @if(Request::is('*/vacancies')) active @endif">{{ trans('base.careers') }}</a>
+					<a href="/{{ App::getLocale() }}/licenses" class="footer_nav-item @if(Request::is('*/licenses')) active @endif">{{ trans('base.license') }}</a>
+					<a href="/{{ App::getLocale() }}/contacts" class="footer_nav-item @if(Request::is('*/contacts')) active @endif">{{ trans('base.contacts') }}</a>
 				</nav>
 			</div>
 			<div class="col-md-3">
-				<img class="footer_logo" src="{{ asset('/img/logo.png') }}" alt="Gidrobud">
+				<img class="footer_logo" src="{{ asset('/img/frontend/logo.png') }}" alt="Gidrobud">
 			</div>
 		</div>
 	</div>

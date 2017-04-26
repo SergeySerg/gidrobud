@@ -4,10 +4,15 @@ $(function(){
     $(".owl-carousel").owlCarousel({
         autoWidth:true,
         items:4,
+        itemsDesktop : [1199,4],
+        itemsDesktopSmall : [980,3],
+        itemsTablet: [768,2],
+        itemsTabletSmall: false,
+        itemsMobile : [479,1],
         nav:false,
         loop: true,
         autoPlay: 4000,
-        dots : false,
+        dots : false
     });
 /***********END setting on main*************/
 
@@ -170,4 +175,11 @@ $(function(){
     }
 /**********END transition to a specified service**************/
 
+    $('#menu-toggle-open').on('click', function () {
+        $('#nav-toggle').addClass('active');
+    });
+    $('#menu-toggle-close').on('click', function () {
+        $('#nav-toggle').removeClass('active');
+    });
+    
 });
