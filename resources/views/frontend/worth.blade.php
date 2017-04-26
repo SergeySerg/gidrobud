@@ -7,7 +7,7 @@
                     <ul class="statistic clearfix">
                         @foreach($worth as $worth_item)
                             <li class="col-md-4 statistic-item-wrap_about-us">
-                                <div class="statistic-item statistic-item_about-us" style="background-image: url('{{ $worth_item->img }}');">
+                                <div class="statistic-item statistic-item_about-us" style="background-image: url('{{ asset($worth_item->img) }}');">
                                     <div class="statistic-item_subtitle statistic-item_subtitle-about-us">
                                         {{ $worth_item->getTranslate('title') }}
                                     </div>

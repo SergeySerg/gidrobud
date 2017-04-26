@@ -51,7 +51,7 @@ class FrontendInit {
 			//share Article
 			view()->share($category->link, $category_item);
 		}
-		//dd($category_item);
+		//dd($categories_data->article->get());
 		/*view()->share('static_page', $static_page);*/
 
 		// Share to views global template variables

@@ -32,7 +32,12 @@ class ArticleController extends Controller {
 	 */
 	public function index($lang, $type = 'main')
 	{
-
+		/*$static_page = Category::where('link', $type)
+			->first()
+			->articles()
+			->activearticles() // use scopeActiveArticles in Article Model
+			->get();
+		dd($static_page);*/
 		//dd($type);
 		//dump($news);
 		//dd($video->category()->first()->active);
@@ -55,6 +60,7 @@ class ArticleController extends Controller {
 		->activearticles() // use scopeActiveArticles in Article Model
 		->first();
 		view()->share('static_page', $static_page);*/
+
 		return view('frontend.' . $type);
 
 	}
