@@ -13,7 +13,7 @@
                         @foreach($projects as $project)
                             @if($project->getAttributeTranslate('Категория'))
                                 <div class="col-sm-4 col-md-4">
-                                    <div class="btn btn__green btn__yellow btn__category" data-category-id="{{ $project->getAttributeTranslate('Категория') }}">{{ trans('base.category') }} {{ $project->getAttributeTranslate('Категория') }}</div>
+                                    <div class="btn btn__green btn__category" data-category-id="{{ $project->getAttributeTranslate('Категория') }}">{{ trans('base.category') }} {{ $project->getAttributeTranslate('Категория') }}</div>
                                 </div>
                             @endif
                         @endforeach

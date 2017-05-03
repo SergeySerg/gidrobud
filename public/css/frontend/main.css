@@ -303,6 +303,9 @@ nav {
 .statistic-item_subscribe-about-us {
   font-size: 12px; }
 
+.services-section{
+  padding-bottom: 30px;}
+
 .section-title_services {
   display: inline-block;
   margin-top: 40px;
@@ -503,7 +506,8 @@ nav {
   margin: 20px auto; }
 
 .services-page-item {
-  display: none; }
+  display: none;
+  min-height: 400px; }
   .services-page-item:first-child {
     display: block; }
 
@@ -547,6 +551,7 @@ textarea {
   padding-bottom: 70px; }
 
 .vacantions-item {
+  height: 550px;
   margin-bottom: 50px; }
   .vacantions-item ul {
     margin-left: -10px; }
@@ -676,7 +681,9 @@ textarea {
   .footer_nav-item {
     padding: 0 3px; }
   .section-title_service-item {
-    font-size: 45px; } }
+    font-size: 45px; }
+  .vacantions-item {
+    height: 700px;} }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
@@ -736,7 +743,9 @@ textarea {
   .vacantions-menu_item {
     display: inline-block;
     width: 48%;
-    padding-right: 0; } }
+    padding-right: 0; }
+  .vacantions-item {
+    height: auto;} }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
