@@ -6,22 +6,20 @@
     <div class="advertising-section">
         <div class="container">
             <div class="row">
-
-                    <div class="col-md-12">
-                        <ul class="statistic clearfix">
-                            @foreach($report as $report_item)
-                                <li class="col-md-3 statistic-item-wrap">
-                                    <div class="statistic-item" style="background-image: url('{{asset('/img/frontend/tower.png')}}');">
-                                        <div class="statistic-item_number">{{ $report_item->getAttributeTranslate('Количество') ? $report_item->getAttributeTranslate('Количество') : '' }}</div>
-                                        <div class="statistic-item_subtitle">{{ $report_item->getTranslate('title') }}</div>
-                                        <div class="statistic-item_subscribe">{!! $report_item->getTranslate('short_description') !!}</div>
-                                    </div>
-                                </li>
-                            @endforeach
-                        </ul>
-                        <div class="shadow-block"></div>
-                    </div>
-
+                <div class="col-md-12">
+                    <ul class="statistic clearfix">
+                        @foreach($report as $report_item)
+                            <li class="col-md-3 statistic-item-wrap">
+                                <div class="statistic-item" style="background-image: url('{{asset('/img/frontend/tower.png')}}');">
+                                    <div class="statistic-item_number">{{ $report_item->getAttributeTranslate('Количество') ? $report_item->getAttributeTranslate('Количество') : '' }}</div>
+                                    <div class="statistic-item_subtitle">{{ $report_item->getTranslate('title') }}</div>
+                                    <div class="statistic-item_subscribe">{!! $report_item->getTranslate('short_description') !!}</div>
+                                </div>
+                            </li>
+                        @endforeach
+                    </ul>
+                    <div class="shadow-block"></div>
+                </div>
             </div>
         </div>
     </div>
@@ -104,8 +102,8 @@
                 @foreach($services as $service)
                     <div class="col-md-4 project-item_wrap">
                         <a href="/{{ App::getLocale() }}/services#{{ $service->id }}" class="project-item services-item">
-                            <h3 class="services-item_title">{{ $service->getTranslate('title') }}</h3>
-                            <div class="project-item_description">
+                            <h3 class="services-item_title services-item_title-main">{{ $service->getTranslate('title') }}</h3>
+                            <div class="project-item_description services-item_description">
                                 {!! $service->getTranslate('short_description')  !!}
                             </div>
                         </a>

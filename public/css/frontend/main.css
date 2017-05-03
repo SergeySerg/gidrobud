@@ -250,9 +250,16 @@ nav {
   .project-item_title {
     color: #569d6a;
     font-size: 16px;
-    margin: 10px 0; }
+    margin: 10px 0;
+    height: 16px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   .project-item:hover {
     background-color: #e3ffeb; }
+  .project-item_description{
+    height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .aboutus-section {
   padding: 50px 0 145px;
@@ -319,6 +326,13 @@ nav {
     font-weight: bold;
     font-size: 20px;
     text-transform: uppercase; }
+  .services-item_title-main{
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;  }
+  .services-item_description{
+    height: 70px;
+  }
 
 .license-orderers-section {
   padding-bottom: 180px;
@@ -416,7 +430,6 @@ nav {
 .project-popup_wrap {
   display: none;
   position: fixed;
-  max-height: 500px;
   top: 50px !important;
   left: 50%;
   margin-left: -500px;
@@ -427,6 +440,9 @@ nav {
   padding: 15px;
   overflow-y: scroll;
   z-index: 15; }
+  .project-popup_wrap .project-item_description{
+      height: initial;
+      overflow: initial; }
 
 .project-popup_item-img {
   width: 100%;
@@ -434,7 +450,9 @@ nav {
   margin-bottom: 15px; }
 
 .project-item_title-in-popup {
-  margin-top: 0; }
+  margin-top: 0;
+  overflow: initial;
+  height: inherit; }
 
 .project-category {
   display: none; }
@@ -846,7 +864,6 @@ animation: none !important
     padding-bottom: 40px; }
   .project-popup_wrap {
     width: 300px;
-    max-height: 420px;
     margin-left: -150px; }
   #callback, .vacantions-resume-popup {
     width: 300px;

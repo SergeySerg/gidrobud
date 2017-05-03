@@ -1,5 +1,10 @@
 $(function(){
 
+/***********set project pop-up height*************/
+    var windowHeight = $(window).height() * 0.9;
+    $('.project-popup_wrap').css({'height' : windowHeight + 'px'});
+/***********END set project pop-up height*************/
+
 /***********setting on main*************/
     $(".owl-carousel").owlCarousel({
         autoWidth:true,
