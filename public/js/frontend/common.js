@@ -181,5 +181,115 @@ $(function(){
     $('#menu-toggle-close').on('click', function () {
         $('#nav-toggle').removeClass('active');
     });
-    
+    /**********call-back popup**************/
+    $('#submit-send').on('click', function(event){
+        $('#submit-send').attr('disabled', true);
+        var data = new FormData($('form.callback')[0]);
+        var url = $( "input[name$='url']" ).val();
+        console.log(data);
+        $.ajax({
+            url: url,
+            method: 'POST',
+            processData: false,
+            contentType: false,
+            data: data,
+            dataType : "json",
+            success: function(data){
+                //console.info('Server response: ', data);
+                if(data.success){
+                    swal(trans['base.success'], "", "success");
+                    $(".callback").trigger("reset");
+                    $('#callback, #overlay').hide();
+                    $("#submit-send").attr('disabled', false);
+
+                }
+                else{
+                    swal(trans['base.error'], data.message, "error");
+                    $("#submit-send").attr('disabled', false);
+                }
+            },
+            error:function(data){
+                swal(trans['base.error']);
+                $("#submit-send").attr('disabled', false);
+                //  jQuery("#resume-form").trigger("reset");
+            }
+
+        });
+        event.preventDefault();
+    });
+    /**********END call-back popup**************/
+    /**********call-back**************/
+    $('#send').on('click', function(event){
+        $('#send').attr('disabled', true);
+        var data = new FormData($('form#contact-callback')[0]);
+        var url = $( "input[name$='url']" ).val();
+        console.log(data);
+        $.ajax({
+            url: url,
+            method: 'POST',
+            processData: false,
+            contentType: false,
+            data: data,
+            dataType : "json",
+            success: function(data){
+                //console.info('Server response: ', data);
+                if(data.success){
+                    swal(trans['base.success'], "", "success");
+                    $("#contact-callback").trigger("reset");
+                    $("#send").attr('disabled', false);
+
+                }
+                else{
+                    swal(trans['base.error'], data.message, "error");
+                    $("#send").attr('disabled', false);
+                }
+            },
+            error:function(data){
+                swal(trans['base.error']);
+                $("#send").attr('disabled', false);
+                //  jQuery("#resume-form").trigger("reset");
+            }
+
+        });
+        event.preventDefault();
+    });
+    /**********END call-back**************/
+
+    /**********Vacancies**************/
+    $('.submit-vacantion').on('click', function(event){
+        $('.submit-vacantion').attr('disabled', true);
+        var vacancy_id = $(this).attr('id');
+        console.log(vacancy_id);
+        var data = new FormData($('form#vacantion-form-' + vacancy_id)[0]);
+        console.log(data);
+        $.ajax({
+            url: '',
+            method: 'POST',
+            processData: false,
+            contentType: false,
+            data: data,
+            dataType : "json",
+            success: function(data){
+                //console.info('Server response: ', data);
+                if(data.success){
+                    swal(trans['base.success'], "", "success");
+                    $("#contact-callback").trigger("reset");
+                    $(".submit-vacantion").attr('disabled', false);
+
+                }
+                else{
+                    swal(trans['base.error'], data.message, "error");
+                    $(".submit-vacantion").attr('disabled', false);
+                }
+            },
+            error:function(data){
+                swal(trans['base.error']);
+                $(".submit-vacantion").attr('disabled', false);
+                //  jQuery("#resume-form").trigger("reset");
+            }
+
+        });
+        event.preventDefault();
+    });
+    /**********\Vacancies**************/
 });

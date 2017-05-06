@@ -30,7 +30,7 @@
                     </div>
                     <h1 class="title section-title section-title_service-item section-title_contact">{{ trans('base.map') }}</h1>
                     <div class="map">
-                        <iframe src="{{ $texts->get('map') }}" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+                        {{--<iframe src="{{ $texts->get('map') }}" width="100%" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>--}}
                     </div>
                 </div>
                 <div class="col-md-6 contact-right">
@@ -39,11 +39,11 @@
                         <input type="text" name="name" placeholder="{{ trans('base.name') }}">
                         <input type="number" name="phone" placeholder="{{ trans('base.tel') }}">
                         <textarea rows="8" name="text" placeholder="{{ trans('base.message') }}"></textarea>
-                        <button type="submit" id="submit-send" class="btn btn__blue">{{ trans('base.send') }}</button>
+                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                        <button type="submit" id="send" class="btn btn__blue">{{ trans('base.send') }}</button>
                     </form>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

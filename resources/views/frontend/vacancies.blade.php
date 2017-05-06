@@ -39,7 +39,9 @@
                                         <input type="text" name="specialty" placeholder="{{ trans('base.spec') }}">
                                         <input type="text" name="experience" placeholder="{{ trans('base.dosv') }}">
                                         <textarea rows="8" name="text" placeholder="{{ trans('base.self') }}"></textarea>
-                                        <button type="submit" id="vacantion-send-{{ $vacancy->id }}" class="btn btn__blue">{{ trans('base.send') }}</button>
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}"/>
+                                        <input type="hidden" name="vacancy" value="{{ $vacancy->getTranslate('title') }}"/>
+                                        <button type="submit" id="{{ $vacancy->id }}" class="btn btn__blue submit-vacantion">{{ trans('base.send') }}</button>
                                     </form>
                                 </div>
                             @endforeach

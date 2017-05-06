@@ -114,16 +114,17 @@
 
 <div id="callback" style="display: none;">
 	<h1 class="title section-title section-title_service-form">{{ trans('base.callback_ring') }}</h1>
-	<form action="" id="vacantion-form-1" method="post">
+	<form action="" class="callback" method="post">
 		<input type="text" name="name" placeholder="{{ trans('base.fio') }}">
 		<input type="number" name="phone" placeholder="{{ trans('base.tel') }}">
 		<textarea rows="8" name="text" placeholder="{{ trans('base.message') }}"></textarea>
-		<button type="submit" id="vacantion-send-1" class="btn btn__blue">{{ trans('base.send') }}</button>
+		<input type="hidden" name="_token" value="{{csrf_token()}}"/>
+		<button type="submit" id="submit-send" class="btn btn__blue">{{ trans('base.send') }}</button>
 	</form>
 </div>
 
 <div id="overlay"></div><!-- Пoдлoжкa -->
-
+<input type="hidden" name="url" value="/{{ App::getLocale() }}/contact"/>
 {{--Файл переводов--}}
 <script>
 	var trans = {
