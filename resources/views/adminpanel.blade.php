@@ -82,7 +82,7 @@
         <div class="container-fluid">
             <a href="{{ route('admin_dashboard') }}" class="brand">
                 {{--<i class="icon-leaf"></i>--}}
-               <img style="display: block;position: absolute;margin-top: -3px;" width="80px" src="{{ asset('/img/backend/logo.png') }}" alt="{{$_SERVER['HTTP_HOST']}}" />
+               <img style="max-height: 35px; margin-top: -5px; margin-bottom: -5px;" src="{{ asset('/img/backend/logo.png') }}" alt="{{$_SERVER['HTTP_HOST']}}" />
                 {{--<small style="margin-left: 40px;">
                     {{$_SERVER['HTTP_HOST']}}
                 </small>--}}

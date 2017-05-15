@@ -1,5 +1,10 @@
 $(function(){
 
+/***********set project pop-up height*************/
+    var windowHeight = $(window).height() * 0.9;
+    $('.project-popup_wrap').css({'height' : windowHeight + 'px'});
+/***********END set project pop-up height*************/
+
 /***********setting on main*************/
     $(".owl-carousel").owlCarousel({
         autoWidth:true,
@@ -140,7 +145,9 @@ $(function(){
 /***********END callback pop-up*************/
 
 /***********project category tabs*************/
-    $('.project-btn-wrapper .btn').click( function (e) {
+
+    $('.project-btn-wrapper div:first-child .btn').addClass('btn__yellow');
+    $('.project-btn-wrapper .btn').click( function () {
         var category_id = $(this).attr('data-category-id');
         $('.project-btn-wrapper .btn').removeClass('btn__yellow');
         $(this).addClass('btn__yellow');

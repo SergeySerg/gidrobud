@@ -202,9 +202,12 @@ nav {
     background-position: 10% center;
     background-size: auto; }
     .statistic-item_number {
+      height: 52px;
       font-size: 50px;
       font-family: "Arial Black";
-      line-height: 52px; }
+      line-height: 52px;
+      overflow: hidden;
+      text-overflow: ellipsis;  }
     .statistic-item_subtitle {
       font-size: 17px;
       font-weight: bold; }
@@ -247,9 +250,16 @@ nav {
   .project-item_title {
     color: #569d6a;
     font-size: 16px;
-    margin: 10px 0; }
+    margin: 10px 0;
+    height: 35px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
   .project-item:hover {
     background-color: #e3ffeb; }
+  .project-item_description{
+    height: 28px;
+    overflow: hidden;
+    text-overflow: ellipsis; }
 
 .aboutus-section {
   padding: 50px 0 145px;
@@ -293,6 +303,9 @@ nav {
 .statistic-item_subscribe-about-us {
   font-size: 12px; }
 
+.services-section{
+  padding-bottom: 30px;}
+
 .section-title_services {
   display: inline-block;
   margin-top: 40px;
@@ -316,6 +329,13 @@ nav {
     font-weight: bold;
     font-size: 20px;
     text-transform: uppercase; }
+  .services-item_title-main{
+    height: 70px;
+    overflow: hidden;
+    text-overflow: ellipsis;  }
+  .services-item_description{
+    height: 70px;
+  }
 
 .license-orderers-section {
   padding-bottom: 180px;
@@ -362,14 +382,17 @@ nav {
     width: 100%;
     border: 1px dashed #000000;
     padding: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     font-size: 25px;
     text-align: center; }
   .content-section img {
-    width: 100%;
-    height: auto;
+    width: 100% !important;
+    height: auto !important;
     border: 1px dashed #000000;
     padding: 15px;
-    margin-bottom: 20px; }
+    margin-bottom: 10px;
+    margin-top: 10px;}
 
 .column {
   -webkit-column-count: 2;
@@ -410,7 +433,6 @@ nav {
 .project-popup_wrap {
   display: none;
   position: fixed;
-  max-height: 500px;
   top: 50px !important;
   left: 50%;
   margin-left: -500px;
@@ -421,6 +443,9 @@ nav {
   padding: 15px;
   overflow-y: scroll;
   z-index: 15; }
+  .project-popup_wrap .project-item_description{
+      height: initial;
+      overflow: initial; }
 
 .project-popup_item-img {
   width: 100%;
@@ -428,7 +453,9 @@ nav {
   margin-bottom: 15px; }
 
 .project-item_title-in-popup {
-  margin-top: 0; }
+  margin-top: 0;
+  overflow: initial;
+  height: inherit; }
 
 .project-category {
   display: none; }
@@ -479,7 +506,8 @@ nav {
   margin: 20px auto; }
 
 .services-page-item {
-  display: none; }
+  display: none;
+  min-height: 400px; }
   .services-page-item:first-child {
     display: block; }
 
@@ -523,6 +551,7 @@ textarea {
   padding-bottom: 70px; }
 
 .vacantions-item {
+  height: 550px;
   margin-bottom: 50px; }
   .vacantions-item ul {
     margin-left: -10px; }
@@ -652,7 +681,9 @@ textarea {
   .footer_nav-item {
     padding: 0 3px; }
   .section-title_service-item {
-    font-size: 45px; } }
+    font-size: 45px; }
+  .vacantions-item {
+    height: 700px;} }
 
 /* Medium Devices, Desktops */
 @media only screen and (max-width: 992px) {
@@ -712,7 +743,9 @@ textarea {
   .vacantions-menu_item {
     display: inline-block;
     width: 48%;
-    padding-right: 0; } }
+    padding-right: 0; }
+  .vacantions-item {
+    height: auto;} }
 
 /* Small Devices, Tablets */
 @media only screen and (max-width: 768px) {
@@ -840,7 +873,6 @@ animation: none !important
     padding-bottom: 40px; }
   .project-popup_wrap {
     width: 300px;
-    max-height: 420px;
     margin-left: -150px; }
   #callback, .vacantions-resume-popup {
     width: 300px;

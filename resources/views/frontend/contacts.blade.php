@@ -10,23 +10,17 @@
                     <div class="row">
                         <div class="col-sm-4 col-md-4">
                             <div class="address"><b>{{ trans('base.address') }}:</b> <br>
-                                {{ $texts->get('address') }}
+                                {!! $texts->get('address') !!}
                             </div>
                         </div>
                         <div class="col-sm-4 col-md-4">
                             <div class="phone">
                                 <b>{{ trans('base.telephone') }}:</b><br>
                                 {{ $texts->get('telephone_one') }} <br>
-                                {{ $texts->get('telephone_second') }}
+                                {{ $texts->get('telephone_second') }}<br>
+                                {{ $texts->get('telephone_third') }}
                             </div>
                         </div>
-                        {{--<div class="col-sm-4 col-md-4">
-                            <div class="phone">
-                                <b>Телефон:</b><br>
-                                +38 (044) 00-00-00 <br>
-                                +38 (044) 11-11-00
-                            </div>
-                        </div>--}}
                     </div>
                     <h1 class="title section-title section-title_service-item section-title_contact">{{ trans('base.map') }}</h1>
                     <div class="map">

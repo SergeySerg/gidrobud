@@ -1,6 +1,6 @@
 {{-- Worth section--}}
 @if( count($worth) !== 0 AND $categories_data['worth']->active == 1)
-    <div class="advertising-section advertising-section_in-content">
+    <div class="advertising-section @if(!Request::is(App::getLocale())) advertising-section_in-content @endif">
         <div class="container">
             <div class="row">
                 <div class="col-md-12">

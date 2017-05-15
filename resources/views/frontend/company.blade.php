@@ -7,11 +7,7 @@
                 <div class="col-md-12">
                     <div class="column">
                         <h1 class="title section-title section-title_content">{{ $company->getTranslate('title') }}</h1>
-                        {!! $company->getTranslate('short_description') !!}
-                        <div class="content-section_box">
-                            {{ $company->getAttributeTranslate('Слоган') ? $company->getAttributeTranslate('Слоган') : '' }}
-                        </div>
-                        <img src="/img/frontend/project-test.jpg" alt="Test">
+                        {!! $company->getTranslate('description') !!}
                     </div>
                 </div>
             </div>
