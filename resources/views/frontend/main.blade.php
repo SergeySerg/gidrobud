@@ -35,7 +35,7 @@
                     @foreach($projects as $project)
                         <div class="col-md-3 project-item_wrap">
                             <a href="#" class="project-item show-project-item" data-project-id="{{ $project->id }}">
-                                <div class="project-item_img" style="background-image: url('{{ $project->img }}');"></div>
+                                <div class="project-item_img" style="background-image: url('{{ $project->getAttributeTranslate('Картинка') }}');"></div>
                                 <h3 class="project-item_title">{{ $project->getTranslate('title') }}</h3>
                                 <div class="project-item_description">
                                     {!! $project->getTranslate('short_description') !!}
@@ -49,7 +49,7 @@
             </div>
                 @foreach($projects as $project)
                     <div class="project-popup_wrap clearfix" data-popup-id="{{ $project->id }}">
-                        <img class="project-popup_item-img" src="{{ $project->img }}" alt="Item">
+                        <img class="project-popup_item-img" src="{{ $project->getAttributeTranslate('Картинка') }}" alt="{ $project->getTranslate('title') }}">
                         <div class="col-md-3">
                             <h3 class="project-item_title project-item_title-in-popup">{{ $project->getTranslate('title') }}</h3>
                             <div class="project-item_description">

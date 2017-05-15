@@ -10,12 +10,21 @@
                         {!! $categories_data['projects']->getTranslate('short_description') !!}
                     </div>
                     <div class="project-btn-wrapper col-sm-12 col-md-6">
-                        @foreach($projects as $project)
-                            @if($project->getAttributeTranslate('Категория'))
-                                <div class="col-sm-4 col-md-4">
-                                    <div class="btn btn__green btn__category" data-category-id="{{ $project->getAttributeTranslate('Категория') }}">{{ trans('base.category') }} {{ $project->getAttributeTranslate('Категория') }}</div>
-                                </div>
-                            @endif
+                        <?php
+                            $arr = [];
+                            foreach($projects as $project){
+                                if($project->getAttributeTranslate('Категория')){
+                                    $arr[] = $project->getAttributeTranslate('Категория');
+                                }
+                            }
+                            //print_r($arr);
+                            $unique_arr = array_unique($arr);
+                            //print_r($unique_arr);
+                        ?>
+                        @foreach($unique_arr as $item)
+                            <div class="col-sm-4 col-md-4">
+                                <div class="btn btn__green btn__category" data-category-id="{{ $item }}">{{ trans('base.category') }} {{ $item }}</div>
+                            </div>
                         @endforeach
                     </div>
                 </div>
@@ -25,7 +34,7 @@
                     <div class="project-category" data-project-category="{{ $project->getAttributeTranslate('Категория') }}">
                         <div class="col-sm-6 col-md-3 project-item_wrap">
                             <a href="#" class="project-item show-project-item" data-project-id="{{ $project->id }}" >
-                                <div class="project-item_img" style="background-image: url('{{ asset($project->img) }}');"></div>
+                                <div class="project-item_img" style="background-image: url('{{ asset($project->getAttributeTranslate('Картинка')) }}');"></div>
                                 <h3 class="project-item_title">{{ $project->getTranslate('title') }}</h3>
                                 <div class="project-item_description">
                                     {!! $project->getTranslate('short_description') !!}
@@ -37,7 +46,7 @@
             </div>
             @foreach($projects as $project)
                 <div class="project-popup_wrap clearfix" data-popup-id="{{ $project->id }}">
-                    <img class="project-popup_item-img" src="{{ asset($project->img) }}" alt="Item">
+                    <img class="project-popup_item-img" src="{{ $project->getAttributeTranslate('Картинка') }}" alt="Item">
                     <div class="col-md-3">
                         <h3 class="project-item_title project-item_title-in-popup">{{ $project->getTranslate('title') }}</h3>
                         <div class="project-item_description">

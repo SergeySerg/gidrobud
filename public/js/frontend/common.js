@@ -146,7 +146,7 @@ $(function(){
 
 /***********project category tabs*************/
 
-    $('.project-btn-wrapper div:first-child .btn').addClass('btn__yellow');
+    /*$('.project-btn-wrapper div:first-child .btn').addClass('btn__yellow');*/
     $('.project-btn-wrapper .btn').click( function () {
         var category_id = $(this).attr('data-category-id');
         $('.project-btn-wrapper .btn').removeClass('btn__yellow');
