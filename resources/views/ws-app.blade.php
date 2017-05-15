@@ -42,15 +42,18 @@
 				</div>
 				<div class="col-md-9">
 					<div class="col-md-offset-2 col-md-3">
-						<div class="address"><b>{{ trans('base.address') }}:</b> <br>
-							{{ $texts->get('address') }}
+						<div class="address">
+							<b>{{ trans('base.address') }}:<br>
+							{!! $texts->get('address') !!}
+							</b>
 						</div>
 					</div>
 					<div class="col-md-offset-1 col-md-3">
 						<div class="phone">
-							<b>{{ trans('base.telephone') }}:</b><br>
+							<b>{{ trans('base.telephone') }}:<br>
 							{{ $texts->get('telephone_one') }} <br>
-							{{ $texts->get('telephone_second') }}
+							{{ $texts->get('telephone_second') }}<br>
+							{{ $texts->get('telephone_third') }}</b>
 						</div>
 					</div>
 					<div class="col-md-3">

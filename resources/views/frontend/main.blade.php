@@ -10,7 +10,7 @@
                     <ul class="statistic clearfix">
                         @foreach($report as $report_item)
                             <li class="col-md-3 statistic-item-wrap">
-                                <div class="statistic-item" style="background-image: url('{{asset('/img/frontend/tower.png')}}');">
+                                <div class="statistic-item" style="background-image: url('{{ asset($report_item-> img)}}');">
                                     <div class="statistic-item_number">{{ $report_item->getAttributeTranslate('Количество') ? $report_item->getAttributeTranslate('Количество') : '' }}</div>
                                     <div class="statistic-item_subtitle">{{ $report_item->getTranslate('title') }}</div>
                                     <div class="statistic-item_subscribe">{!! $report_item->getTranslate('short_description') !!}</div>
