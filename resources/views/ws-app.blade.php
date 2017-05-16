@@ -2,9 +2,9 @@
 <html lang="{{ App::getLocale() }}">
 <head>
 	<meta charset="utf-8">
-	<title>	@if(isset($static_page)){{ $static_page->getTranslate('meta_title') }}  @elseif(isset($seo)) {{ $seo->getTranslate('meta_title') }} @endif</title>
-	<meta name="description" content="@if(isset($static_page)) {{ $static_page->getTranslate('meta_description') }} @elseif(isset($seo)){{ $seo->getTranslate('meta_description') }}@endif">
-	<meta name="keywords" content="@if(isset($static_page)) {{ $static_page->getTranslate('meta_keywords') }} @elseif(isset($seo)) {{ $seo->getTranslate('meta_keywords') }}@endif">
+	<title>@if($categories_data[$type]->getTranslate('meta_title')){{ $categories_data[$type]->getTranslate('meta_title') }} @else Гидробуд @endif</title>
+	<meta name="description" content="@if($categories_data[$type]->getTranslate('meta_description')){{ $categories_data[$type]->getTranslate('meta_description') }} @else Предприятие проводит весь комплекс работ по строительству систем водоснабжения, водоотведения и канализации на всей территории Украины. @endif">
+	<meta name="keywords" content="@if($categories_data[$type]->getTranslate('meta_keywords')){{ $categories_data[$type]->getTranslate('meta_keywords') }} @else Гидробуд @endif">
 
 	{{-- CSS --}}
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">

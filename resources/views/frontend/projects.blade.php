@@ -46,7 +46,7 @@
             </div>
             @foreach($projects as $project)
                 <div class="project-popup_wrap clearfix" data-popup-id="{{ $project->id }}">
-                    <img class="project-popup_item-img" src="{{ $project->getAttributeTranslate('Картинка') }}" alt="Item">
+                    <img class="project-popup_item-img" src="{{ asset($project->getAttributeTranslate('Картинка')) }}" alt="{{ $project->getTranslate('title') }}">
                     <div class="col-md-3">
                         <h3 class="project-item_title project-item_title-in-popup">{{ $project->getTranslate('title') }}</h3>
                         <div class="project-item_description">

@@ -34,6 +34,12 @@ class FrontendInit {
 		App::setLocale($request->lang);
 		$texts = new Text();
 
+		//share type
+		$type = $request->type;
+		if(is_null($request->type)){
+			$type = 'main';
+		}
+
 		//get all Category
 		$categories = Category::all();
 		$categories_data = [];
@@ -52,13 +58,14 @@ class FrontendInit {
 			view()->share($category->link, $category_item);
 		}
 		//dd($categories_data->article->get());
-		/*view()->share('static_page', $static_page);*/
+
 
 		// Share to views global template variables
 		view()->share('langs', Lang::all());
 		view()->share('texts', $texts->init());
 		view()->share('categories_data', $categories_data);
 		view()->share('version', config('app.version'));
+		view()->share('type', $type);
 
 		return $next($request);
 	}
