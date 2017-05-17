@@ -23,7 +23,7 @@
                         ?>
                         @foreach($unique_arr as $item)
                             <div class="col-sm-4 col-md-4">
-                                <div class="btn btn__green btn__category" data-category-id="{{ $item }}">{{ trans('base.category') }} {{ $item }}</div>
+                                <div class="btn btn__green btn__category" data-category-id="{{ str_replace(" ","",$item) }}">{{ $item }}</div>
                             </div>
                         @endforeach
                     </div>
@@ -31,7 +31,7 @@
             </div>
             <div class="row project-content">
                 @foreach($projects as $project)
-                    <div class="project-category" data-project-category="{{ $project->getAttributeTranslate('Категория') }}">
+                    <div class="project-category" data-project-category="{{ str_replace(" ","",$project->getAttributeTranslate('Категория')) }}">
                         <div class="col-sm-6 col-md-3 project-item_wrap">
                             <a href="#" class="project-item show-project-item" data-project-id="{{ $project->id }}" >
                                 <div class="project-item_img" style="background-image: url('{{ asset($project->getAttributeTranslate('Картинка')) }}');"></div>
