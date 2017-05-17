@@ -145,8 +145,7 @@ $(function(){
 /***********END callback pop-up*************/
 
 /***********project category tabs*************/
-
-    /*$('.project-btn-wrapper div:first-child .btn').addClass('btn__yellow');*/
+    $('.project-content').find('[data-project-category]').fadeIn(1000);
     $('.project-btn-wrapper .btn').click( function () {
         var category_id = $(this).attr('data-category-id');
         $('.project-btn-wrapper .btn').removeClass('btn__yellow');
@@ -157,7 +156,7 @@ $(function(){
 /***********END project category tabs*************/
 
 /***********services category tabs*************/
-    $('.services-menu_item').click( function (e) {
+    $('.services-menu_item').click( function () {
         var services_id = $(this).attr('data-services-id');
         $('.services-menu_item').removeClass('active');
         $(this).addClass('active');
@@ -182,13 +181,16 @@ $(function(){
     }
 /**********END transition to a specified service**************/
 
+/**********Adaptive menu**************/
     $('#menu-toggle-open').on('click', function () {
         $('#nav-toggle').addClass('active');
     });
     $('#menu-toggle-close').on('click', function () {
         $('#nav-toggle').removeClass('active');
     });
-    /**********call-back popup**************/
+/**********END adaptive menu**************/
+
+/**********call-back popup**************/
     $('#submit-send').on('click', function(event){
         $('#submit-send').attr('disabled', true);
         var data = new FormData($('form.callback')[0]);
@@ -224,8 +226,9 @@ $(function(){
         });
         event.preventDefault();
     });
-    /**********END call-back popup**************/
-    /**********call-back**************/
+/**********END call-back popup**************/
+
+/**********call-back**************/
     $('#send').on('click', function(event){
         $('#send').attr('disabled', true);
         var data = new FormData($('form#contact-callback')[0]);
@@ -260,9 +263,9 @@ $(function(){
         });
         event.preventDefault();
     });
-    /**********END call-back**************/
+/**********END call-back**************/
 
-    /**********Vacancies**************/
+/**********Vacancies**************/
     $('.submit-vacantion').on('click', function(event){
         $('.submit-vacantion').attr('disabled', true);
         var vacancy_id = $(this).attr('id');
@@ -298,5 +301,6 @@ $(function(){
         });
         event.preventDefault();
     });
-    /**********\Vacancies**************/
+/**********\Vacancies**************/
+    
 });
