@@ -30,6 +30,18 @@
 </head>
 
 <body>
+	<div id="menu-toggle-open">Меню</div>
+	<nav id="nav-toggle">
+		<a href="/{{ App::getLocale() }}" class="nav-toggle_item @if(Request::is(App::getLocale())) active @endif">{{ trans('base.main') }}</a>
+		<a href="/{{ App::getLocale() }}/company" class="nav-toggle_item @if(Request::is('*/company')) active @endif">{{ trans('base.company') }}</a>
+		<a href="/{{ App::getLocale() }}/services" class="nav-toggle_item @if(Request::is('*/services')) active @endif">{{ trans('base.services') }}</a>
+		<a href="/{{ App::getLocale() }}/projects" class="nav-toggle_item @if(Request::is('*/projects')) active @endif">{{ trans('base.project') }}</a>
+		<a href="/{{ App::getLocale() }}/vacancies" class="nav-toggle_item @if(Request::is('*/vacancies')) active @endif">{{ trans('base.careers') }}</a>
+		<a href="/{{ App::getLocale() }}/licenses" class="nav-toggle_item @if(Request::is('*/licenses')) active @endif">{{ trans('base.license') }}</a>
+		<a href="/{{ App::getLocale() }}/contacts" class="nav-toggle_item @if(Request::is('*/contacts')) active @endif">{{ trans('base.contacts') }}</a>
+		<div id="menu-toggle-close">Закрыть</div>
+	</nav>
+
 	@if(Request::is(App::getLocale()))
 	<header class="header" style="background-image: url('{{ asset('/img/frontend/bg-main.jpg') }}')">
 	@else
@@ -37,18 +49,18 @@
 	@endif
 		<div class="container header-wrap">
 			<div class="row">
-				<div class="col-md-3">
+				<div class="col-xs-5 col-sm-2 col-md-3">
 					<a href="/{{ App::getLocale() }}"><img src="{{ asset('img/frontend/logo.png') }}" alt="Gidrobud" class="logo"></a>
 				</div>
-				<div class="col-md-9">
-					<div class="col-md-offset-2 col-md-3">
+				<div class="col-xs-7 col-sm-10 col-md-9 xs-text-right">
+					<div class="col-xs-12 col-sm-4 col-md-offset-2 col-md-3">
 						<div class="address">
 							<b>{{ trans('base.address') }}:<br>
 							{!! $texts->get('address') !!}
 							</b>
 						</div>
 					</div>
-					<div class="col-md-offset-1 col-md-3">
+					<div class="col-xs-12 col-sm-4 col-md-offset-1 col-md-3">
 						<div class="phone">
 							<b>{{ trans('base.telephone') }}:<br>
 							{{ $texts->get('telephone_one') }} <br>
@@ -56,10 +68,10 @@
 							{{ $texts->get('telephone_third') }}</b>
 						</div>
 					</div>
-					<div class="col-md-3">
+					<div class="col-xs-12 col-sm-4 col-md-3">
 						<div class="btn btn__yellow callback">{{ trans('base.callback') }}</div>
 					</div>
-					<div class="col-md-12">
+					<div class="col-sm-12 col-md-12">
 						<nav class="nav__blue">
 							<a href="/{{ App::getLocale() }}" class="nav_item @if(Request::is(App::getLocale())) active @endif">{{ trans('base.main') }}</a>
 							<a href="/{{ App::getLocale() }}/company" class="nav_item @if(Request::is('*/company')) active @endif">{{ trans('base.company') }}</a>
@@ -94,10 +106,10 @@
 <footer class="footer">
 	<div class="container">
 		<div class="row">
-			<div class="col-md-3">
+			<div class="col-sm-2 col-md-3">
 				<div class="btn btn__yellow btn__footer callback">{{ trans('base.callback') }}</div>
 			</div>
-			<div class="col-md-6">
+			<div class="col-sm-8 col-md-6">
 				<nav class="footer_nav">
 					<a href="/{{ App::getLocale() }}" class="footer_nav-item @if(Request::is(App::getLocale())) active @endif">{{ trans('base.main') }}</a>
 					<a href="/{{ App::getLocale() }}/company" class="footer_nav-item @if(Request::is('*/company')) active @endif">{{ trans('base.company') }}</a>
@@ -108,7 +120,7 @@
 					<a href="/{{ App::getLocale() }}/contacts" class="footer_nav-item @if(Request::is('*/contacts')) active @endif">{{ trans('base.contacts') }}</a>
 				</nav>
 			</div>
-			<div class="col-md-3">
+			<div class="col-sm-2 col-md-3">
 				<img class="footer_logo" src="{{ asset('/img/frontend/logo.png') }}" alt="Gidrobud">
 			</div>
 		</div>
