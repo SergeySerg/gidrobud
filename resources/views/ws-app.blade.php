@@ -81,7 +81,7 @@
 							<div class="section-description">
 								{!! $main->getTranslate('short_description') !!}
 							</div>
-							<a href="/{{ App::getLocale() }}/services"><div class="btn btn__blue">{{ trans('base.more') }}</div></a>
+							<a href="/{{ App::getLocale() }}/company"><div class="btn btn__blue">{{ trans('base.more') }}</div></a>
 						@endif
 					</div>
 				</div>

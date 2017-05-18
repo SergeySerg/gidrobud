@@ -110,7 +110,7 @@
                     </div>
                 @endforeach
                 <div class="col-md-4">
-                    <a href="/{{ App::getLocale() }}/projects"><div class="btn btn__blue btn__services">{{ trans('base.more') }}</div></a>
+                    <a href="/{{ App::getLocale() }}/services"><div class="btn btn__blue btn__services">{{ trans('base.more') }}</div></a>
                 </div>
             </div>
         </div>
